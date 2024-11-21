@@ -1,0 +1,709 @@
+@font-face {
+    font-family: avenir;
+	src: url('/files/avenirr.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: avenirheavy;
+	src: url('/files/avenirhea.ttf') format('truetype');
+}
+.input-field {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.input-field p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.row-detail-date, .balance, .type, .type-transfer, .status, .address, .hash {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-overflow: ellipsis;
+}
+.address i, .hash i {
+    cursor: pointer;
+    transform: scale(1.0);
+    border-radius: 6px;
+    transition: 0.1s all linear;
+    margin-left: 8px;
+}
+
+.address i:hover, .hash i:hover {
+    transform: scale(1.2);
+}
+.input-field .inputfield {
+    width: 100%;
+    outline: none;
+    height: 3rem;
+    padding: 10px;
+    color: var(--text-color);
+    font-size: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    background: var(--inputbox-color);
+    margin-bottom: 10px;
+    transition: 0.2s all linear;
+}
+
+.input-field .inputfield:focus {
+    border: 2px solid var(--button-color);
+}
+
+.input-field {
+    margin-bottom: 20px;
+}
+
+.input-field .inputfield {
+    height: 2.5rem;
+}
+
+:root {
+    --main-color: #2f2f2f;
+    --transferbox-color: #1e1e1e;
+    --button-color: #353471;
+    --text-color: #cccdcf;
+    --bluebtn-color: #1877d3;
+    --darkblue-color: #1b5e9c;
+    --msgbox-color: #202c38;
+    --addressbox-color: #424242;
+    --btnborder-color: #373737;
+    --buttonclicked-color: #a0a0a7;
+    --btnclick-color: #0f4982;
+    --btnhover-color: #4a91d6;
+    --border-color: #36373b;
+    --inputbox-color: #1e1f21;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: avenir;
+}
+
+body {
+    width: 100%;
+    background: var(--main-color);
+    position: relative;
+}
+
+#qr_heading {
+    text-align: center;
+    color: #d3d3d3;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem; /* 2% */
+}
+
+#box_heading {
+    font-weight: 400;
+    color: var(--text-color);
+    font-size: 22px;
+    width: 80%;
+    font-weight: 600;
+    margin: 0px auto 20px auto;
+    text-transform: uppercase;
+}
+
+.clipboard {
+    position: fixed;
+    bottom: 20px;
+    z-index: 99;
+    width: 30%;
+    padding: 15px 15px; /* 25px 15px; */
+    margin: 0px auto;
+    background: #18b118;
+    left: 0px;
+    right: 0px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: var(--text-color);
+    border-radius: 5px;
+    display: none;
+    transition: 0.2s all linear;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.clipboard i {
+    font-size: 25px;
+    display: block;
+}
+
+.clip-close {
+    cursor: pointer;
+}
+
+.deposit-wrapper {
+    width: 35rem;
+    margin: 3% auto;
+    border-radius: 4px;
+}
+
+.drop_down_container {
+    width: 100%;
+}
+
+.drop-down {
+    width: 80%;
+    margin: 0px auto 10% auto;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    transition: 0.2s all linear;
+}
+
+.arrow {
+    position: absolute;
+    color: var(--text-color);
+    right: 20px;
+    transition: 0.2s all linear;
+}
+
+.arrow i {
+    font-size: 24px;
+    transition: 0.2s all linear;
+}
+
+.hide_arrow {
+    opacity: 0 !important;
+}
+
+.deposit_box {
+    /* width: 90%; */
+    /* margin: 2% auto; */
+    border-radius: 5px;
+    padding: 5% 0px;
+    background-color: var(--transferbox-color);
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    width: 80%;
+    margin: 0px auto;
+}
+
+.short_message_box,
+.long_message_box {
+    width: 100%;
+    margin: 0px auto;
+    padding: 1rem 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--msgbox-color);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    margin-bottom: 6%;
+}
+
+.short_message_box {
+    margin-bottom: 12% !important;
+}
+
+/* test if any different from normal */
+.short_message_box strong {
+    font-family: avenirheavy;
+}
+
+.short_message_box p {
+    color: #1d94f2;
+    font-size: 18px; /* 16px; */
+    width: 85%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.long_message_box p {
+    color: #1d94f2;
+    font-size: 18px; /* 16px; */
+    margin: 0px auto;
+    width: 90%;
+    text-align: left;
+}
+
+.long_box_content {
+    width: 90%;
+    display: flex;
+	/* justify-content: ; */
+    align-items: flex-start;
+}
+
+.long_box_content i {
+    color: var(--bluebtn-color);
+    width: 10%;
+    font-size: 20px;
+}
+
+#bold {
+    color: #1d94f2;
+}
+
+.copy_address {
+    width: 100%;
+    margin-bottom: 12%;
+}
+
+.copy_address h3 {
+    color: #d3d3d3;
+    padding-left: 10px;
+}
+
+.address_box_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.6rem 10px;
+    position: relative;
+}
+
+.address_box {
+    width: 85%;
+	/*
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	*/
+    background-color: var(--transfer-box);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.address_box p {
+    font-size: 20px; /* 16px */
+    color: #d3d3d3;
+    word-wrap: break-word;
+    /* width: 90%; */
+    text-align: left;
+    line-height: 30px;
+}
+
+.copy_icon {
+    border-radius: 50%;
+    width: 10%;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    top: 6px;
+    transition: 0.2s all linear;
+    background-color: transparent;
+    
+    /* width: 15%; */
+	/*
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	*/
+    /* text-align: center; */
+}
+
+.copy_icon img {
+    width: 80%;
+}
+
+.copy_icon i {
+    font-size: 25px;
+    color: ghostwhite;
+    cursor: pointer;
+}
+
+.copy_icon:hover {
+    background-color: #5a5a5a;
+}
+
+.qr_img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.qr_img img {
+    width: 50%;
+    background-color: #fff;
+    padding: 1px;
+}
+
+.proof_button {
+    width: 100%;
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.proof_button .upload-btn {
+    background-color: #353471;
+    color: ghostwhite;
+    height: 3rem;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 500;
+    outline: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+
+.button_group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.change_currency_button {
+    width: 8rem;
+    background-color: transparent;
+    color: var(--darkblue-color);
+    height: 2rem;
+    border: 2px solid var(--btnborder-color);
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
+    transition: 0.2s all linear;
+}
+
+.dashboard_button {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
+    transition: 0.2s all linear;
+    background-color: var(--bluebtn-color);
+    color: ghostwhite;
+    border: none;
+}
+
+.change_currency_button:hover {
+    background-color: var(--btnhover-color);
+    color: ghostwhite;
+    border: none;
+}
+
+.dashboard_button:hover {
+    background-color: var(--btnhover-color);
+}
+
+.click_btn {
+    background-color: var(--btnclick-color) !important;
+}
+
+.submit_btn {
+    width: 100%;
+    text-align: center;
+    display: none;
+    position: relative;
+    margin-bottom: 15%;
+}
+
+#submit_btn {
+    width: 100%;
+    background-color: #353471;
+    color: ghostwhite;
+    border: none;
+    outline: none;
+    height: 3rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.spining-wheel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 35px;
+    border-top: 4px solid var(--main-color);
+    border-left: 4px solid var(--main-color);
+    border-bottom: 4px solid var(--main-color);
+    border-right: 4px solid transparent;
+    border-radius: 360px;
+    display: none;
+    transform: rotate(0deg);
+    animation: 0.8s rotate linear infinite;
+}
+
+#fileInput {
+    display: none;
+}
+
+#imagePreview {
+    width: 100%;
+    height: auto;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10% auto;
+}
+
+#imagePreview img {
+    width: 100%;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.btnclick-color {
+    background: var(--buttonclicked-color) !important;
+    color: black !important;
+}
+
+/* CUSTOM DROP DOWN */
+
+.height {
+    height: 40vh !important;
+}
+
+#my-select {
+    display: none;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+	/* 	z-index: 9999999; */
+}
+
+.custom-select .selected-option img {
+    width: 45px;
+    margin-right: 10px;
+}
+
+.custom-select .options-list li img {
+    width: 45px;
+    margin-right: 10px;
+}
+
+.custom-select .selected-option {
+    height: 6rem;
+    background-color: #1e1f21;
+    cursor: pointer;
+    color: ghostwhite;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 20px;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.custom-select .options-list {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    background-color: #1e1f21;
+    color: ghostwhite;
+    border: none;
+    outline: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 999;
+}
+
+.custom-select .options-list li {
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s all linear;
+}
+
+.custom-select .selected-option span,
+.custom-select .options-list li span {
+    color: gray;
+    font-size: 20px;
+}
+
+.custom-select .selected-option #coin-name,
+.custom-select .options-list li #coin-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: ghostwhite;
+}
+
+.custom-select .selected-option #value,
+.custom-select .options-list li #value {
+    color: #bfbcbd;
+    font-size: 18px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.custom-select .options-list li:hover {
+    background-color: #353471;
+}
+
+.custom-select.open .options-list {
+    display: block;
+    overflow: auto;
+}
+
+@media (max-width: 480px) {
+    /* test if any different from normal */
+    .short_message_box strong {
+        font-family: avenir;
+    }
+    
+    .long_message_box p, .short_message_box p {
+        font-size: 16px;
+    }
+    
+    .deposit-wrapper {
+        width: 95%;
+    }
+
+    .deposit_box {
+        width: 23rem;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .drop-down {
+        width: 90%;
+    }
+
+    .custom-select .selected-option {
+        height: 5rem;
+    }
+
+    .custom-select .options-list li img,
+	.custom-select .selected-option img {
+        width: 30px;
+    }
+
+    .custom-select .selected-option #coin-name,
+	.custom-select .options-list li #coin-name {
+        font-size: 18px;
+    }
+
+    .copy_address h3, 
+    #qr_heading {
+        font-size: 15px;
+    }
+    
+    .address_box p {
+        font-size: 17px;
+    }
+
+    .copy_icon i {
+        font-size: 20px;
+    }
+
+    .change_currency_button,
+	.dashboard_button {
+        width: 8rem;
+        font-size: 10px;
+        height: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .proof_button .upload-btn,
+	#submit_btn {
+        width: 100%;
+        font-size: 13px;
+        height: 3rem;
+    }
+
+    .button_group button {
+        margin-bottom: 10%;
+    }
+
+    #box_heading {
+        font-size: 18px;
+        width: 90%;
+    }
+
+    .clipboard {
+        width: 70%;
+        padding: 12px 15px;
+        bottom: 20px;
+    }
+
+    .clipboard p {
+        font-size: 15px;
+    }
+
+    .clipboard i {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 375px) {
+    .deposit_box {
+        width: 22rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .deposit_box {
+        width: 20rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .deposit_box {
+        width: 18rem;
+    }
+}
+
+@media (max-width: 320px) { /* 300px */
+    .deposit_box {
+        width: 16rem;
+    }
+
+    .custom-select .selected-option {
+        gap: 0px;
+    }
+
+    .long_box_content {
+        gap: 5px;
+    }
+
+    .long_message_box p {
+        color: var(--darkblue-color);
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,428 @@
+@font-face {
+    font-family: avenir;
+	src: url('/files/avenirr.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: avenirheavy;
+	src: url('/files/avenirhea.ttf') format('truetype');
+}
+
+:root {
+    --main-color: #18191a;
+ /* #151b1b; */
+    --transferbox-color: #18191b;
+    --button-color: #353471;
+    --text-color: #e4e5e8;
+    --bluebtn-color: #1679d5;
+    --darkblue-color: #1b5e9c;
+    --msgbox-color: #202c38;
+    --addressbox-color: #424242;
+    --btnborder-color: #373737;
+    --buttonclicked-color: #a0a0a7;
+    --btnclick-color: #0f4982;
+    --btnhover-color: #4a91d6;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: avenir;
+}
+
+body {
+    background-color: var(--main-color);
+}
+
+.vip_main_box {
+    width: 32rem;
+    margin: 4% auto;
+}
+
+.red_box_container {
+    margin-bottom: 5%;
+}
+
+.red-box {
+    margin: 0px auto;
+    width: 100%;
+    padding: 15px;
+    background-color: #151b1b;
+    border-color: gold;
+    color: gold;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.vip_main_box .heading {
+    font-size: 25px;
+    color: var(--text-color);
+    margin-bottom: 5%;
+}
+
+.level_number {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 5%;
+}
+
+.level {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.level_number img {
+    width: 30px;
+}
+
+#level {
+    color: #e1883b;
+    font-size: 25px;
+}
+
+.vip_table {
+    border: 2px solid #292d2e;
+}
+
+.heading_row {
+    width: 100%;
+    background-color: #1e201f;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 10px 0px;
+    color: #6c7073;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.heading_row p {
+    width: 30%;
+}
+
+.vip_table_row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0px;
+	/* 	font-size:15px; */
+    border-top: 2px solid #292d2e;
+}
+
+.vip_table_row div {
+    width: 30%;
+    text-align: center;
+}
+
+.buy_button {
+    color: var(--text-color);
+}
+
+/* Last column color and boldness change from here */
+.maker {
+    color: #585c5d;
+    font-weight: 500;
+    font-size: 15px !important;
+}
+
+/* Second column color change from here */
+.trade_vol {
+    color: #4789e2;
+    font-size: 15px !important;
+}
+
+.buy_button button {
+    background-color: var(--bluebtn-color);
+    border: none;
+    border-radius: 7px;
+    height: 2.2rem;
+    padding: 0px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: ghostwhite;
+    cursor: pointer;
+    transition: 0.2s all linear;
+    white-space: nowrap;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.buy_button button:hover {
+    background-color: var(--btnhover-color);
+}
+
+.click_btn {
+    background-color: var(--btnclick-color) !important;
+}
+
+.disable_buy_button button {
+    background-color: #747884 !important;
+    color: #f1f4fb !important;
+    pointer-events: none;
+}
+
+.rules {
+    width: 100%;
+}
+
+.rules ul {
+    padding: 0px 15px;
+    margin: 15px auto;
+    /* list */
+}
+
+.rules ul li {
+    margin-bottom: 5%;
+    color: #898991;
+    font-size: 16px;
+}
+
+.rules ul li a {
+    color: var(--text-color);
+}
+
+/* CUSTOM DROP DOWN */
+
+.drop_down_container {
+    width: 60%;
+}
+
+.height {
+    height: 30vh !important;
+}
+
+#my-select {
+    display: none;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select .selected-option img,
+.custom-select .options-list li img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+/* .custom-select .selected-option #coin-name,.custom-select .options-list li #coin-name,.custom-select .selected-option span, .custom-select .options-list li span
+{
+	font-size: 22px;
+} */
+.custom-select .selected-option {
+    height: 3.8rem;
+    background-color: #2c3039;
+    cursor: pointer;
+    color: ghostwhite;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 20px;
+    gap: 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.custom-select .options-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    background-color: #1e2126;
+    color: ghostwhite;
+    border: none;
+    outline: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 999;
+}
+
+.custom-select .options-list li {
+    height: 3.8rem; /* 4.5rem; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+    padding: 0px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s all linear;
+}
+
+.custom-select .selected-option span,
+.custom-select .options-list li span {
+    color: gray;
+    font-size: 18px;
+}
+
+#coin-name {
+    font-family: avenirheavy;
+}
+
+.custom-select .selected-option #coin-name,
+.custom-select .options-list li #coin-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: ghostwhite;
+}
+
+.custom-select .selected-option #value,
+.custom-select .options-list li #value {
+    color: #bfbcbd;
+    font-size: 18px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.custom-select .options-list li:hover {
+    background-color: #353471;
+}
+
+.custom-select.open .options-list {
+    display: block;
+    overflow: auto;
+}
+
+.arrow,
+.check_sign {
+    position: absolute;
+    right: 5%;
+}
+
+.arrow i {
+    color: #858c9b;
+	/* 	font-size: 30px; */
+}
+
+.check_sign i {
+    color: #e1883b;
+    font-size: 25px;
+    display: none;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    transition: 0.2s all linear;
+}
+
+#coin_full_name {
+    font-weight: 400 !important;
+}
+
+.coin_full_name {
+    color: gray !important;
+}
+
+/* RESPONSIVE CSS */
+
+/* @media (max-width: 1366px) 
+{
+	.custom-select .selected-option #coin-name,.custom-select .options-list li #coin-name,.custom-select .selected-option span, .custom-select .options-list li span
+	{
+		font-size: 22px;
+	}
+	.custom-select .selected-option
+	{
+		height: 3.8rem;
+	}
+	.custom-select .selected-option img,.custom-select .options-list li img 
+	{
+		width: 30px;
+		margin-right: 10px;
+	}   
+} */
+
+@media (max-width: 540px) {
+    .vip_main_box {
+        width: 30rem;
+    }
+
+    .level_number {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .level {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .drop_down_container {
+        width: 100%;
+    }
+
+    .custom-select {
+        margin-bottom: 0%;
+    }
+}
+
+@media (max-width: 480px) {
+    .vip_main_box {
+        width: 90%;
+        margin: 6% auto;
+    }
+
+    .vip_table_row {
+        font-size: 15px;
+    }
+
+    .buy_button button {
+        font-size: 14px;
+        height: 2rem;
+    }
+
+    .custom-select .selected-option img {
+        width: 28px;
+        margin-right: 10px;
+    }
+
+    .custom-select .selected-option {
+        height: 3.2rem;
+    }
+
+    .custom-select .selected-option #coin-name,
+	.custom-select .options-list li #coin-name {
+        font-size: 20px;
+    }
+
+    .custom-select .options-list li img {
+        width: 28px;
+        margin-right: 10px;
+    }
+    
+    .custom-select .options-list li {
+        height: 3.2rem;
+    }
+    
+    .custom-select .selected-option span,
+	.custom-select .options-list li span {
+        color: gray;
+        font-size: 20px;
+    }
+
+    .height {
+        height: 28vh !important;
+    }
+}
+
+@media (max-width: 340px) {
+    .buy_button button {
+        padding: 0px 5px;
+    }
+}

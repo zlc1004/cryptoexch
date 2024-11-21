@@ -1,0 +1,94 @@
+@font-face {
+    font-family: avenir;
+	src: url('/files/avenirr.ttf') format('truetype');
+}
+
+:root {
+    --main-color: #2f2f2f;
+    --box-color: #1e1e1e;
+    --text-color: #bebebe;
+    --tick-color: #4daf50;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: avenir;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--activebtnhover-color);
+}
+
+body {
+    overflow: hidden;
+}
+
+.success-main-box {
+    width: 100%;
+    height: 100vh;
+    background: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.content-box {
+    background: var(--box-color);
+    width: 28rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    color: var(--text-color);
+    position: relative;
+    margin-top: 40px;
+}
+
+.tick-mark,
+.success-msg,
+.short-msg {
+    width: 100%;
+}
+
+.tick-mark {
+    text-align: center;
+    color: var(--tick-color) !important;
+    font-size: 3rem;
+    margin: 0px auto 10px auto;
+}
+
+.success-msg {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.short-msg {
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+@media (max-width: 480px) {
+    .content-box {
+        width: 22.5rem;
+    }
+}
+
+@media (max-width: 320px) { /* 280px */
+    .content-box {
+        width: 14.5rem;
+    }
+
+    .success-msg h1 {
+        font-size: 22px;
+    }
+
+    .short-msg {
+        font-size: 13px;
+    }
+}

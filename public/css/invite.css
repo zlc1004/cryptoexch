@@ -1,0 +1,545 @@
+@font-face {
+    font-family: avenir;
+	src: url('/files/avenirr.ttf') format('truetype');
+}
+
+:root {
+    --main-color: #18191A;
+    --box-color: #212223;
+    --btnhover-color: #D9DCE6;
+    --boxtext-color: #C5C1BD;
+    --text-color: #C5C1BD;
+    --submitbtn-color: #353471;
+    --buttonclicked-color: #a0a0a7;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: avenir;
+}
+
+body {
+    overflow: auto;
+    background-color: var(--main-color);
+}
+
+.invite_main_wrapper {
+    width: 100%;
+    background-color: var(--main-color);
+    padding: 3% 0px;
+    position: relative;
+    z-index: 1;
+}
+
+.black_screen {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: none;
+    transition: 0.2s all linear;
+}
+
+.dialog_box {
+    display: none;
+    transition: 0.2s all linear;
+    width: 22rem;
+    padding: 25px;
+    background-color: #212223;
+    border-radius: 5px;
+    z-index: 9999;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 10px 15px #0c0f0f;
+}
+
+.dialog_box h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.dialog_box p {
+    color: #fff;
+}
+
+.login_link {
+    width: 100%;
+    margin-top: 15%;
+    text-align: right;
+}
+
+.login_link #login {
+    text-decoration: none;
+    color: green;
+    text-transform: uppercase;
+    transition: 0.2s all linear;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.login_link #login:hover {
+    background-color: rgba(0, 128, 0, 0.15);
+}
+
+.clickgreen {
+    background-color: rgba(0, 128, 0, 0.5) !important;
+}
+
+.clipboard {
+    position: fixed;
+    bottom: 20px;
+    z-index: 99;
+    width: 30%;
+    padding: 15px 15px; /* 25px 15px; */
+    margin: 0px auto;
+    background: #18b118;
+    left: 0px;
+    right: 0px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: var(--text-color);
+    border-radius: 5px;
+    display: none;
+    transition: 0.2s all linear;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.clipboard i {
+    font-size: 25px;
+    display: block;
+}
+
+.spinning-wheel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 35px;
+    height: 35px;
+    border-top: 4px solid var(--main-color);
+    border-left: 4px solid var(--main-color);
+    border-bottom: 4px solid var(--main-color);
+    border-right: 4px solid transparent;
+    border-radius: 360px;
+    display: none;
+    transform: rotate(0deg);
+    animation: 0.8s rotate linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+.submit_button {
+    position: relative;
+}
+
+.btnclick-color {
+    background: var(--buttonclicked-color) !important;
+    color: black !important;
+}
+
+.clip-close {
+    cursor: pointer;
+}
+
+.invite_container {
+    width: 50rem;
+    margin: 0px auto;
+}
+
+.invite_container #main_heading {
+    color: #fff;
+    font-size: 32px;
+    margin-block: 4px;
+}
+
+.invite_container #main_para {
+    color: #c5c1bd99;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.boxes_container {
+    width: 95%;
+    margin: 0px auto;
+}
+
+.referral_boxes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 5%;
+}
+
+.referral_code,.referral_link {
+    width: 48%;
+    padding: 25px;
+    background-color: var(--box-color);
+    border: none;
+    border-radius: 4px;
+    word-wrap: break-word;
+}
+
+.referral_code p,.referral_link p {
+    color: var(--boxtext-color);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.referral_code #code,.referral_link #link {
+    font-size: 20px;
+}
+
+.referral_code button,.referral_link button {
+    font-size: 14px;
+    color: var(--boxtext-color);
+    font-weight: 600;
+    background-color: #282a2b;
+    width: 9rem;
+    border: none;
+    outline: none;
+    padding: 14px 0px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s all linear;
+}
+
+.referral_code button:hover,.referral_link button:hover {
+    background-color: var(--btnhover-color);
+    color: #333;
+}
+
+.active_button {
+    background-color: var(--btnhover-color);
+    color: #333;
+}
+
+.active_referral_box {
+    width: 100%;
+    background-color: var(--box-color);
+    padding: 35px 20px 25px 20px;
+    margin: 5% auto;
+}
+
+.active_referral_box h1 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 3%;
+    color: #fff;
+}
+
+.active_referral_box p {
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.submit_button p {
+    font-size: 16px;
+    color: #cccdcf;
+    text-align: center;
+}
+
+.active_referral_box .input {
+    width: 100%;
+    background-color: #1D1F20;
+    outline: none;
+    border: 1px solid #42474A;
+    margin-bottom: 4%;
+    padding-left: 10px;
+    height: 3rem;
+    font-size: 18px;
+    color: gray;
+    font-weight: 300;
+    transition: 0.2s all linear;
+}
+
+.active_referral_box button {
+    width: 100%;
+    background-color: var(--submitbtn-color);
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+    height: 3rem;
+    font-weight: 300;
+}
+
+.submit-disable button:hover {
+    background-color: lightgray !important;
+    color: whitesmoke !important;
+    cursor: not-allowed !important;
+    transition: 0.2s all linear;
+}
+
+.statistics h1 {
+    font-size: 18px;
+    color: var(--boxtext-color);
+    font-weight: 700;
+}
+
+.statistics_section div {
+    display: flex;
+    flex-direction: column;
+}
+
+.statistics_section div p {
+    color: #c5c1bd99;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#btc,#usd,#percentage,#invite {
+    color: var(--boxtext-color);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.statistics_section {
+    display: flex;
+    gap: 5%;
+    margin-top: 5%;
+}
+
+#vertical_line {
+    width: 1px;
+    height: auto;
+    background-color: gray;
+}
+
+.your_referral_section {
+    margin-top: 12%;
+}
+
+.your_referral_section h1 {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.referal_dropdown_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5% auto;
+}
+
+.referal_dropdown_container select {
+    background-color: #232627;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.referral_search {
+    display: flex;
+    align-items: center;
+}
+
+.referral_search i {
+    height: 3rem;
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    background-color: #232627;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.referral_search input {
+    height: 3rem;
+    padding: 10px;
+    width: 12rem;
+    border: none;
+    outline: none;
+    color: gray;
+    font-size: 14px;
+    font-weight: 300;
+    background-color: #232627;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.no_data {
+    width: 100%;
+    text-align: center;
+    color: gray;
+    margin-top: 10%;
+}
+
+.no_data p {
+    pointer-events: none;
+    cursor: default;
+}
+
+.footer {
+    width: 100%;
+    background-color: #fff;
+    height: 5rem;
+}
+
+.referral_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    background-color: #232628;
+ /* #252628; */
+	/* border-top: 2px solid #1e1e1e; */
+    margin-top: 5px;
+    padding: 0px 3rem;
+}
+
+.name {
+    font-size: 15px;
+    color: #c5c5c5;
+ /* #3e6ea8; */
+}
+
+.numbers {
+    font-size: 15px;
+    font-weight: 300;
+    color: #c5c5c5;
+}
+
+@media (max-width: 1024px) {
+    .invite_container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 920px) {
+	
+    .referral_code #code, .referral_link #link {
+        font-size: 18px;
+        word-break: break-word;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .invite_container #main_heading ,.invite_container #main_para {
+        width: 85%;
+        margin: 10px auto;
+    }
+
+    .invite_main_wrapper {
+        padding: 6% 0px;
+    }
+
+    .referral_boxes {
+        flex-direction: column;
+    }
+
+    .statistics_section {
+        display: flex;
+        gap: 5%;
+        margin-top: 5%;
+        flex-direction: column;
+    }
+
+    .referral_code, .referral_link {
+        width: 90%;
+        margin: 0px auto 5% auto;
+    }
+
+    .active_referral_box {
+        width: 90%;
+        margin: 0% auto 5% auto;
+    }
+
+    .statistics {
+        width: 90%;
+        margin: 5% auto;
+    }
+
+    .statistics_section div {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .your_referral_section {
+        width: 90%;
+        margin: 12% auto 0% auto;
+    }
+
+    #vertical_line {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .referral_row {
+        height: 2rem;
+    }
+
+    .name {
+        font-size: 15px;
+    }
+
+    .numbers {
+        font-size: 15px;
+    }
+
+    .invite_container {
+        width: 100%;
+    }
+}
+
+@media(max-width:600px) {
+    .clipboard {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .dialog_box {
+        width: 85%;
+    }
+
+    .clipboard {
+        padding: 12px 15px;
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 375px) {
+    .clipboard {
+        width: 80%;
+        padding: 20px 15px;
+        bottom: 20px;
+    }
+}

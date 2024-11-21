@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="max-age=200" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Kobeex Protocol</title>
+    <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/roboto" />
+    <link rel="stylesheet" type="text/css" href="/css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="/css/deposit.css" />
+  </head>
+  <body>
+    <noscript>To best view this website, javascript must be enabled!</noscript>
+    <div class="zhezhaoBox"></div>
+    <div class="headerBox">
+      <div class="menuBox">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <h2 id="page-name"></h2>
+      <div class="headerProfile">
+        <i class="fa-solid fa-user"></i>
+        <div class="nameBox" id="username">benny92</div>
+        <div class="desktop-logout" onclick="logoutSession()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+        <div class="vipmobil"></div>
+      </div>
+    </div>
+    <div class="nav-left-Box">
+      <div class="logo">
+        <img src="/banner" style="padding-top: 10px" alt="" />
+      </div>
+      <div class="account-level"><h2>Trial Mode</h2></div>
+      <div class="side-menu-buttons">
+        <a class="button-shadow" id="deposit"> Deposit </a>
+        <!-- <a href="/transfer" class="button-shadow">
+	    		Transfer
+	    	</a> -->
+        <a href="/withdraw" class="button-shadow"> Withdraw </a>
+      </div>
+      <div class="hr hr2"></div>
+      <a href="/home" id="sidebarlink">
+        <div class="nav-left-Box-List">
+          <!-- fa-grip-vertical -->
+          <i class="fa-solid fa-house"></i>Dashboard
+        </div>
+      </a>
+      <a href="/upgrade" id="sidebarlink">
+        <div class="nav-left-Box-List">
+          <!-- fa-arrow-trend-up -->
+          <i class="fa-solid fa-key"></i>Upgrade
+        </div>
+      </a>
+
+      <div id="customline"></div>
+      <a id="sidebarlink">
+        <div class="nav-left-Box-List">
+          <i class="fa-solid fa-book"></i>API Docs
+          <small class="small_disable">Soon</small>
+        </div>
+      </a>
+      <div class="logout" onclick="logoutSession()">
+        <i class="fa-solid fa-right-from-bracket"></i>Logout
+      </div>
+    </div>
+    <div class="everycontainer">
+      <div class="black_screen"></div>
+      <div class="clipboard">
+        <p>Copied to clipboard!</p>
+        <div class="clip-close">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+      <div class="new_deposit_wrapper">
+        <div class="page_one">
+          <div class="show_level">
+            <div class="level_one">
+              <p>1</p>
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="horizontal_line"></div>
+            <div class="level_two">
+              <p>2</p>
+              <!-- <i class="fa-solid fa-check"></i> -->
+            </div>
+          </div>
+          <!-- <div class="hr"></div> -->
+          <div class="wheel_container">
+            <p>Getting Wallet Address</p>
+            <div class="spining-wheel"></div>
+          </div>
+          <p id="currency_select">select a currency</p>
+          <div class="drop_down_container">
+            <div class="drop-down">
+              <div class="custom-select">
+                <div class="selected-option" name="BTC">
+                  <input
+                    type="hidden"
+                    name="coin_short"
+                    id="coin_short"
+                    value="BTC"
+                  />
+                  <input
+                    type="hidden"
+                    name="coin-value"
+                    id="coin-value"
+                    value=""
+                  />
+                  <img src="/icons/BTC.png" />
+                  <span>
+                    <span id="coin-name">BTC</span>
+                    <span id="dash">-</span>
+                    <span id="value" name="sub_name">Bitcoin</span>
+                  </span>
+                  <div class="arrow">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </div>
+                </div>
+                <ul class="options-list">
+                  <div class="option_list_heading">
+                    <h1 id="option_list_heading">Currency List</h1>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                  <li data-image="/icons/BCH.png" name="BCH">
+                    <img src="/icons/BCH.png" />
+                    <div>
+                      <div id="coin-name">BCH</div>
+                      <div id="full_name">Bitcoin Cash</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/BNB.png" name="BNB">
+                    <img src="/icons/BNB.png" />
+                    <div>
+                      <div id="coin-name">BNB</div>
+                      <div id="full_name">Binance</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/BTC.png" name="BTC">
+                    <img src="/icons/BTC.png" />
+                    <div>
+                      <div id="coin-name">BTC</div>
+                      <div id="full_name">Bitcoin</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/DOGE.png" name="DOGE">
+                    <img src="/icons/DOGE.png" />
+                    <div>
+                      <div id="coin-name">DOGE</div>
+                      <div id="full_name">Dogecoin</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/ETH.png" name="ETH">
+                    <img src="/icons/ETH.png" />
+                    <div>
+                      <div id="coin-name">ETH</div>
+                      <div id="full_name">Ethereum</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/LTC.png" name="LTC">
+                    <img src="/icons/LTC.png" />
+                    <div>
+                      <div id="coin-name">LTC</div>
+                      <div id="full_name">Litecoin</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/SOL.png" name="SOL">
+                    <img src="/icons/SOL.png" />
+                    <div>
+                      <div id="coin-name">SOL</div>
+                      <div id="full_name">Solana</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/TRX.png" name="TRX">
+                    <img src="/icons/TRX.png" />
+                    <div>
+                      <div id="coin-name">TRX</div>
+                      <div id="full_name">Tron</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/USDT.png" name="USDT">
+                    <img src="/icons/USDT.png" />
+                    <div>
+                      <div id="coin-name">USDT</div>
+                      <div id="full_name">Tether ERC20</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/XMR.png" name="XMR">
+                    <img src="/icons/XMR.png" />
+                    <div>
+                      <div id="coin-name">XMR</div>
+                      <div id="full_name">Monero</div>
+                    </div>
+                  </li>
+                  <li data-image="/icons/XRP.png" name="XRP">
+                    <img src="/icons/XRP.png" />
+                    <div>
+                      <div id="coin-name">XRP</div>
+                      <div id="full_name">Ripple</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="continue_btn continue_disable_btn">
+            <button>Continue</button>
+          </div>
+        </div>
+        <div class="container">
+          <br />
+          <div class="copy_address">
+            <h3>COPY ADDRESS</h3>
+            <div class="address_box_container">
+              <div class="address_box">
+                <p>bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy</p>
+              </div>
+              <div class="copy_icon">
+                <i class="fa-regular fa-clipboard" id="copy_icon"></i>
+              </div>
+            </div>
+
+          </div>
+          <h3 id="qr_heading">Scan QR Code</h3>
+          <div class="qr_img">
+            <img
+              src="/address/bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy"
+              draggable="false"
+              alt=""
+            />
+          </div>
+          <div class="long_message_box">
+            <div class="long_box_content">
+              <i class="fa-solid fa-circle-info"></i>
+              <p>
+                Minimum deposit <strong id="bold">0.00005</strong> BTC. An
+                amount below minimum will result in your deposit being lost.
+              </p>
+            </div>
+          </div>
+          <br />
+          <div class="button_group">
+            <!-- <button class="change_currency_button">CHANGE CURRENCY</button> -->
+            <button class="back_button">Change Currency</button>
+            <button
+              class="dashboard_button"
+              onclick="setTimeout(function() { location.href = '/home'; }, 200);"
+            >
+              DASHBOARD
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/files/action.js"></script>
+    <script>
+      $("#username")[0].innerHTML=document.cookie.split("; ")[0].split("=")[1];
+      $(".button_group")
+        .find("button")
+        .on("mousedown", function () {
+          $(this).addClass("click_btn");
+        });
+
+      $(".button_group")
+        .find("button")
+        .on("mouseup", function () {
+          $(this).removeClass("click_btn");
+        });
+
+      $(".new_address_button")
+        .find("button")
+        .on("mousedown", function () {
+          $(this).addClass("click_btn");
+        });
+
+      $(".new_address_button")
+        .find("button")
+        .on("mouseup", function () {
+          $(this).removeClass("click_btn");
+        });
+
+      $(".change_currency_button").on("mousedown", function () {
+        $(this).addClass("click_btn");
+      });
+
+      $(".back_button").on("mousedown", function () {
+        $(this).addClass("click_btc");
+      });
+
+      $(".back_button").on("mouseup", function () {
+        $(this).removeClass("click_btn");
+        $(".continue_btn").addClass("continue_disable_btn");
+        $(".drop_down_container").css("display", "flex");
+        $(".container").css("display", "none");
+        $(".continue_btn").css("display", "block");
+        $(".level_one").find("p").css("display", "block");
+        $(".level_one").find("i").css("display", "none");
+        $(".level_two").css("background-color", "gray");
+      });
+
+      $("#submit_btn").on("click", function () {
+        event.preventDefault();
+
+        $(this).addClass("btnclick-color");
+        $(this).find("p").hide();
+
+        // $(this).closest('.submit_btn').find('.spining-wheel').css('display', 'block');
+        $(".spining_wheel_two").css("display", "block");
+
+        setTimeout(function () {
+          $(".submit_btn").find("button").removeClass("btnclick-color");
+          $(".submit_btn").find("button").find("p").show();
+          $(".spining_wheel_two").css("display", "none");
+          $("#myform").submit();
+        }, 2065);
+      });
+
+      $(".custom-select .selected-option").on("click", function () {
+        $(this).parent().toggleClass("open");
+        $(".options-list").toggleClass("height");
+      });
+
+      $(".custom-select .options-list li").on(
+        "touchstart touchend",
+        function (e) {
+          // e.preventDefault();
+          $(this).toggleClass("touchhovercolor");
+        }
+      );
+
+      $(".custom-select .options-list li").on("click", function () {
+        var selectedValue = $(this).data("value");
+        var selectedImage = $(this).data("image");
+        var abbrcoin = $(this).find("div").find("#coin-name").text();
+        var fullcoinname = $(this).find("div").find("#full_name").text();
+        // var value = $(this).find('span').find('#value').html();
+        var name = $(this).attr("name");
+
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find("#coin-name")
+          .text(abbrcoin);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find("#value")
+          .text(fullcoinname);
+        // $(this).closest('.custom-select').find('.selected-option #value').attr('value',value);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option img")
+          .attr("src", selectedImage);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .attr("name", name);
+        $(this).closest(".custom-select").removeClass("open");
+        $(".custom-select .options-list li").css(
+          "background-color",
+          "transparent"
+        );
+        $(this).css("background-color", "#4f4d50");
+        $("#coin_short").val(name);
+        $("#coin-value").val(value);
+        $(this).parent().toggleClass("height");
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find(".arrow")
+          .toggleClass("rotate");
+        $(".continue_btn").removeClass("continue_disable_btn");
+        $(".black_screen").css("display", "none");
+
+        if (name == "BCH") {
+          var cryptoaddress = "qqprdjwnvauvnvhf5pyrz7a0jx0khpe0dqpf2rvpca";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;BCH. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/qqprdjwnvauvnvhf5pyrz7a0jx0khpe0dqpf2rvpca"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "BNB") {
+          var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;BNB. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "BTC") {
+          var cryptoaddress = "bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.00005</strong>&nbsp;BTC. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "DOGE") {
+          var cryptoaddress = "DMxJTccpTpCusWF6RRWe9VX4X4cfksF7yC";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.1</strong>&nbsp;DOGE. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr("src", "/address/DMxJTccpTpCusWF6RRWe9VX4X4cfksF7yC");
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "ETH") {
+          var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;ETH. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "LTC") {
+          var cryptoaddress = "ltc1qjtr5g96vnhnlxtrpep02up274e0h6d66pxf9fl";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.005</strong>&nbsp;LTC. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr("src", "/address/ltc1qjtr5g96vnhnlxtrpep02up274e0h6d66pxf9fl");
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "SOL") {
+          var cryptoaddress = "FctpkK5bQwWpJSm7tYErwNQv7b34oeT2qmSutvCk8yjo";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.01</strong>&nbsp;SOL. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/FctpkK5bQwWpJSm7tYErwNQv7b34oeT2qmSutvCk8yjo"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "TRX") {
+          var cryptoaddress = "TUzFATMeKwB7Qmq6jdaJJSmxocQEi5m6Pj";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.005</strong>&nbsp;TRX. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr("src", "/address/TUzFATMeKwB7Qmq6jdaJJSmxocQEi5m6Pj");
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "USDT") {
+          var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.01</strong>&nbsp;USDT. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "XMR") {
+          var cryptoaddress =
+            "8A36gm2UxA2bUF4eMFNMecVMDKm9n9AnERxMJQULLmePPiSYknENytjbfeA2GD8ACLXkmB2aFTv9Rf2bVUw17v8F46TASth";
+          var longMessage =
+            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;XMR. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr(
+            "src",
+            "/address/8A36gm2UxA2bUF4eMFNMecVMDKm9n9AnERxMJQULLmePPiSYknENytjbfeA2GD8ACLXkmB2aFTv9Rf2bVUw17v8F46TASth"
+          );
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+        if (name == "XRP") {
+          var cryptoaddress = "rK6utP3F3vNjeGpzCDY6Q1JK8X2mbTabTe";
+          var longMessage =
+            'Minimum deposit <strong id="bold">10</strong>&nbsp;XRP. An amount below minimum will result in your deposit being lost';
+          var qrimage = $(".qr_img").find("img");
+
+          qrimage.attr("src", "/address/rK6utP3F3vNjeGpzCDY6Q1JK8X2mbTabTe");
+          $(".address_box").find("p").html(cryptoaddress);
+          $(".long_message_box").find("p").html(longMessage);
+        }
+      });
+
+      $("#currency_select").on("click", function () {
+        $(".drop_down_container").css("display", "block");
+
+        if ($(window).width() <= 480) {
+          $(".drop_down_container").css("margin-top", "12px");
+          $(".drop_down_container").css("margin-bottom", "12px");
+        } else {
+          $(".drop_down_container").css("margin-top", "24px");
+          $(".drop_down_container").css("margin-bottom", "24px");
+        }
+
+        $(".custom-select").toggleClass("open");
+        $(this).css("display", "none");
+        $(".black_screen").css("display", "block");
+      });
+
+      $(".option_list_heading")
+        .find("i")
+        .on("click", function () {
+          $(".drop_down_container").css("display", "none");
+          $(".custom-select").toggleClass("open");
+          $("#currency_select").css("display", "block");
+          $(".continue_btn").addClass("continue_disable_btn");
+          $(".black_screen").css("display", "none");
+        });
+
+      $(".continue_btn")
+        .find("button")
+        .on("click", function () {
+          $(".wheel_container").css("display", "flex");
+          $(".drop_down_container").css("display", "none");
+
+          setTimeout(function () {
+            $(".wheel_container").css("display", "none");
+            $(".container").css("display", "block");
+            $(".continue_btn").css("display", "none");
+            $("#currency_select").css("display", "none");
+            $(".level_one").find("p").css("display", "none");
+            $(".level_one").find("i").css("display", "block");
+            $(".level_two").css("background-color", "var(--bluebtn-color)");
+          }, 800);
+        });
+
+      $("#copy_icon").on("click", function () {
+        $(".clipboard").css({
+          display: "flex",
+          transform: "scale(1)",
+          opacity: "1",
+        });
+
+        $(this).closest(".copy_icon").css("background-color", "#393939");
+
+        setTimeout(function () {
+          $(".clipboard").css({
+            display: "none",
+            transform: "scale(0)",
+            opacity: "0",
+          });
+
+          $("#copy_icon")
+            .closest(".copy_icon")
+            .css("background-color", "#1e1e1e");
+        }, 2000);
+
+        setTimeout(function () {
+          $("#copy_icon")
+            .closest(".copy_icon")
+            .css("background-color", "#1e1e1e");
+        }, 1000);
+
+        var addresscopy = $(this)
+          .closest(".copy_icon")
+          .parent(".address_box_container")
+          .find(".address_box")
+          .text();
+
+        navigator.clipboard.writeText(addresscopy);
+      });
+
+      $(".clip-close").on("click", function () {
+        $(".clipboard").css("transform", "scale(0)");
+      });
+    </script>
+  </body>
+</html>

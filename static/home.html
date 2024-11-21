@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="max-age=200" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Kobeex Protocol</title>
+    <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/roboto" />
+    <link rel="stylesheet" type="text/css" href="/css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="/css/fireworks.css" />
+    <link rel="stylesheet" type="text/css" href="/css/chat.css" />
+  </head>
+  <body>
+    <noscript>To best view this website, javascript must be enabled!</noscript>
+    <div class="zhezhaoBox"></div>
+    <div class="headerBox">
+      <div class="menuBox">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <h2 id="page-name">Dashboard</h2>
+      <div class="headerProfile">
+        <i class="fa-solid fa-user"></i>
+        <div class="nameBox" id="username">benny92</div>
+        <div class="desktop-logout" onclick="logoutSession()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+        <div class="vipmobil"></div>
+      </div>
+    </div>
+    <div class="nav-left-Box">
+      <div class="logo">
+        <img src="/banner" style="padding-top: 10px" alt="" />
+      </div>
+      <div class="account-level"><h2>Trial Mode</h2></div>
+      <div class="side-menu-buttons">
+        <a href="/deposit" class="button-shadow" id="deposit"> Deposit </a>
+        <!-- <a href="/transfer" class="button-shadow">
+	    		Transfer
+	    	</a> -->
+        <a href="/withdraw" class="button-shadow"> Withdraw </a>
+      </div>
+      <div class="hr hr2"></div>
+      <a id="sidebarlink">
+        <div class="nav-left-Box-List active">
+          <!-- fa-grip-vertical -->
+          <i class="fa-solid fa-house"></i>Dashboard
+        </div>
+      </a>
+      <a href="/upgrade" id="sidebarlink">
+        <div class="nav-left-Box-List">
+          <!-- fa-arrow-trend-up -->
+          <i class="fa-solid fa-key"></i>Upgrade
+        </div>
+      </a>
+
+      <div id="customline"></div>
+      <a id="sidebarlink">
+        <div class="nav-left-Box-List">
+          <i class="fa-solid fa-book"></i>API Docs
+          <small class="small_disable">Soon</small>
+        </div>
+      </a>
+      <div class="logout" onclick="logoutSession()">
+        <i class="fa-solid fa-right-from-bracket"></i>Logout
+      </div>
+    </div>
+    <div class="everycontainer">
+      <div class="mainbox">
+        <div class="membership-box">
+          <div class="sheet-button">
+            <button id="balance" class="sheet-active-button sheet-buttons">
+              Balance
+            </button>
+            <button id="transaction" class="sheet-buttons">Deposits</button>
+          </div>
+          <div class="balance-box">
+            <div class="total-balance">
+              <p>Total Balance</p>
+              <h2>
+                <span id="total_value">0.18809628</span>&nbsp;(<span
+                  id="three_letter"
+                  >BTC</span
+                >)
+              </h2>
+            </div>
+            <div class="drop_down_container">
+              <div class="drop-down">
+                <div class="custom-select">
+                  <div class="selected-option" name="BTC">
+                    <input
+                      type="hidden"
+                      name="coin_short"
+                      id="coin_short"
+                      value="BTC"
+                    />
+                    <input
+                      type="hidden"
+                      name="coin-value"
+                      id="coin-value"
+                      value="0.18809628"
+                    />
+                    <img src="/icons/BTC.png" />
+                    <span>
+                      <span id="coin-name">BTC</span>
+                    </span>
+                    <div class="absolute_arrow">
+                      <i class="fa-solid fa-caret-up"></i>
+                    </div>
+                  </div>
+                  <ul class="options-list">
+                    <li
+                      data-image="/icons/BCH.png"
+                      name="BCH"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/BCH.png" />
+                      <span>
+                        <span id="coin-name">BCH</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Bitcoin Cash</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/BNB.png"
+                      name="BNB"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/BNB.png" />
+                      <span>
+                        <span id="coin-name">BNB</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Binance</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/BTC.png"
+                      name="BTC"
+                      value="0.18809628"
+                    >
+                      <img src="/icons/BTC.png" />
+                      <span>
+                        <span id="coin-name">BTC</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Bitcoin</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/DOGE.png"
+                      name="DOGE"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/DOGE.png" />
+                      <span>
+                        <span id="coin-name">DOGE</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Dogecoin</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/ETH.png"
+                      name="ETH"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/ETH.png" />
+                      <span>
+                        <span id="coin-name">ETH</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Ethereum</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/LTC.png"
+                      name="LTC"
+                      value="0.00203889"
+                    >
+                      <img src="/icons/LTC.png" />
+                      <span>
+                        <span id="coin-name">LTC</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Litecoin</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/SOL.png"
+                      name="SOL"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/SOL.png" />
+                      <span>
+                        <span id="coin-name">SOL</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Solana</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/TRX.png"
+                      name="TRX"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/TRX.png" />
+                      <span>
+                        <span id="coin-name">TRX</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Tron</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/USDT.png"
+                      name="USDT"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/USDT.png" />
+                      <span>
+                        <span id="coin-name">USDT</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Tether ERC20</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/XMR.png"
+                      name="XMR"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/XMR.png" />
+                      <span>
+                        <span id="coin-name">XMR</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Monero</span>
+                      </span>
+                    </li>
+                    <li
+                      data-image="/icons/XRP.png"
+                      name="XRP"
+                      value="0.00000000"
+                    >
+                      <img src="/icons/XRP.png" />
+                      <span>
+                        <span id="coin-name">XRP</span>&nbsp;
+                        <span id="dash">-</span>&nbsp;
+                        <span id="full_name">Ripple</span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="transaction-record">
+            <div class="transaction-table">
+              <div class="data-row">
+                <div class="cell" id="date">04/07/2023</div>
+                <div class="cell" id="username">Level 1 API</div>
+                <div class="cell" id="amount"><span>0.001</span>25639</div>
+                <div class="cell" id="crypt_name">BTC</div>
+              </div>
+              <div class="data-row">
+                <div class="cell" id="date">04/08/2023</div>
+                <div class="cell" id="username">Level 4 API</div>
+                <div class="cell" id="amount"><span>1.017</span>01105</div>
+                <div class="cell" id="crypt_name">LTC</div>
+              </div>
+            </div>
+          </div>
+          <div class="titles">
+            <p>Currency</p>
+            <p>Total</p>
+          </div>
+          <div class="hr"></div>
+          <div class="table">
+            <ul>
+              <li id="open-detail">
+                <div class="table-heading toggle">
+                  <div class="arrow rotate">
+                    <i class="fa-solid fa-angle-up"></i>
+                  </div>
+                  <div class="table-img-title">
+                    <img src="/icons/LTC.png" alt="" />
+                    <div class="table-title">
+                      <p>LTC</p>
+                      <p>Litecoin</p>
+                    </div>
+                  </div>
+                  <div class="table-balance">
+                    <strong>0.002</strong><span>03889 </span>
+                    <span>LTC</span>
+                  </div>
+                </div>
+                <div class="all-details inner">
+                  <p>Litecoin</p>
+                  <div class="hr"></div>
+                  <div class="opt">
+                    Available:&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span id="available">&nbsp;0.00203889</span>
+                  </div>
+                  <div class="opt">
+                    In Orders:&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span id="orders">&nbsp;None</span>
+                  </div>
+                  <div class="opt">
+                    Unconfirmed:&nbsp;
+                    <span id="unconfirmed">&nbsp;None</span>
+                  </div>
+                  <div class="all-detail-btn">
+                    <button onclick="location.href='/deposit';">DEPOSIT</button>
+                    <button class="disable-table-btn">TRANSFER</button>
+                  </div>
+                </div>
+              </li>
+              <div class="hr"></div>
+              <li id="open-detail">
+                <div class="table-heading toggle">
+                  <div class="arrow rotate">
+                    <i class="fa-solid fa-angle-up"></i>
+                  </div>
+                  <div class="table-img-title">
+                    <img src="/icons/BTC.png" alt="" />
+                    <div class="table-title">
+                      <p>BTC</p>
+                      <p>Bitcoin</p>
+                    </div>
+                  </div>
+                  <div class="table-balance">
+                    <strong>0.188</strong><span>09628 </span>
+                    <span>BTC</span>
+                  </div>
+                </div>
+                <div class="all-details inner">
+                  <p>Bitcoin</p>
+                  <div class="hr"></div>
+                  <div class="opt">
+                    Available:&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span id="available">&nbsp;0.18809628 </span>
+                  </div>
+                  <div class="opt">
+                    In Orders:&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span id="orders">&nbsp;None</span>
+                  </div>
+                  <div class="opt">
+                    Unconfirmed:&nbsp;
+                    <span id="unconfirmed"> &nbsp;None </span>
+                  </div>
+                  <div class="all-detail-btn">
+                    <button onclick="location.href='/deposit';">DEPOSIT</button
+                    ><button onclick="location.href='/transfer';">
+                      TRANSFER
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <div class="hr"></div>
+            </ul>
+          </div>
+          <div class="full-table">
+            <button class="disable-table-btn">SEE FULL TABLE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/files/action.js"></script>
+    <script>
+      $("#username")[0].innerHTML=document.cookie.split("; ")[0].split("=")[1];
+
+      $("#username")[0].innerHTML=document.cookie.split("; ")[0].split("=")[1];
+      $(".custom-select .selected-option").on("click", function () {
+        $(this).parent().toggleClass("open");
+        $(this).find(".arrow").toggleClass("rotate");
+        $(this).find(".absolute_arrow").toggleClass("rotate_two");
+        $(".options-list").toggleClass("height");
+      });
+
+      $(".custom-select .options-list li").on("click", function () {
+        var selectedValue = $(this).attr("value");
+        var selectedImage = $(this).data("image");
+        var abbrcoin = $(this).find("span").find("#coin-name").text();
+        var name = $(this).attr("name");
+
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find("#coin-name")
+          .text(abbrcoin);
+        $("#three_letter").text(abbrcoin);
+        $("#total_value").text(selectedValue);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option img")
+          .attr("src", selectedImage);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .attr("name", name);
+        $(this).closest(".custom-select").removeClass("open");
+        $(".custom-select .options-list li").css(
+          "background-color",
+          "transparent"
+        );
+        $(this).css("background-color", "#5a5a5a");
+        $(this).parent().toggleClass("height");
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find(".arrow")
+          .toggleClass("rotate");
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find(".absolute_arrow")
+          .toggleClass("rotate_two");
+        $(".absolute_arrow").removeClass("rotate_two");
+      });
+
+      $(".option_list_heading")
+        .find("i")
+        .on("click", function () {
+          $(".custom-select").toggleClass("open");
+        });
+
+      $(".toggle").on("click", function (e) {
+        if ($(this).find(".arrow").hasClass("rotate")) {
+          $(".toggle").find(".arrow").addClass("rotate");
+          $(this).find(".arrow").removeClass("rotate");
+        } else {
+          $(this).find(".arrow").addClass("rotate");
+        }
+
+        if ($(this).parent().hasClass("listcolor")) {
+          $(this).parent().removeClass("listcolor");
+
+          if (window.matchMedia("(max-width: 700px)").matches) {
+            $(this).parent().css("background-color", "transparent");
+          }
+        } else {
+          $(".toggle").parent().removeClass("listcolor");
+          $(this).parent().addClass("listcolor");
+        }
+
+        e.preventDefault();
+
+        if ($(this).next().hasClass("show")) {
+          $(this).next().removeClass("show");
+          $(this).next().slideUp(350);
+        } else {
+          $(this).parent().parent().find("li .inner").removeClass("show");
+          $(this).parent().parent().find("li .inner").slideUp(350);
+          $(this).next().toggleClass("show");
+          $(this).next().slideToggle(350);
+        }
+      });
+
+      $(document).on("click", function (event) {
+        var dropdown = $(".custom-select");
+        var viprow = $(".data-row");
+
+        if (
+          !dropdown.is(event.target) &&
+          dropdown.has(event.target).length === 0
+        ) {
+          dropdown.removeClass("open");
+          $(".absolute_arrow").removeClass("rotate_two");
+        }
+
+        if (!viprow.is(event.target) && viprow.has(event.target).length === 0) {
+          viprow.removeClass("row-clicked");
+          $(this).toggleClass("row-clicked");
+        }
+      });
+
+      $("#transaction").on("mousedown", function () {
+        $(this).addClass("clickbtn-color");
+      });
+
+      $("#transaction").on("mouseup", function () {
+        setTimeout(function () {
+          $("#transaction").removeClass("clickbtn-color");
+
+          if (window.matchMedia("(max-width: 700px)").matches) {
+            $("#transaction").css("background-color", "transparent");
+          }
+        }, 750);
+
+        $(this).addClass("sheet-active-button");
+        $(".data-row #amount").addClass("green");
+        $("#balance").removeClass("sheet-active-button");
+        $(".transaction-record").slideDown(200);
+      });
+
+      $("#balance").on("mousedown", function () {
+        $(this).addClass("clickbtn-color");
+      });
+
+      $("#balance").on("mouseup", function () {
+        setTimeout(function () {
+          $("#balance").removeClass("clickbtn-color");
+
+          if (window.matchMedia("(max-width: 700px)").matches) {
+            $("#balance").css("background-color", "transparent");
+          }
+        }, 750);
+
+        $(this).addClass("sheet-active-button");
+        $(".row #amount").removeClass("green");
+        $("#transaction").removeClass("sheet-active-button");
+        $(".transaction-record").slideUp(200);
+        $(".data-row").removeClass("row-clicked");
+      });
+
+      $(".data-row").on("click", function () {
+        $(".data-row").removeClass("row-clicked");
+        $(this).toggleClass("row-clicked");
+      });
+    </script>
+  </body>
+</html>

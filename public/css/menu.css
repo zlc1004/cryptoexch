@@ -1,0 +1,953 @@
+@font-face {
+    font-family: avenir;
+	src: url('/files/avenirr.ttf') format('truetype');
+}
+
+:root {
+    --header-color: #1d1d1d;
+    --sidebar-color: #1e1e1e;
+    --body-color: #282828;
+    --hover-color: #717171;
+    --disablebtn-color: #393939;
+    --disablebtntext-color: #757575;
+    --btnclick-color: #1b456b;
+    --sidebtnhover-color: rgb(74, 145, 214);
+    --active-color: #1876d3;
+    --activebtn-color: #1675d2;
+    --activebtnhover-color: #1f252c;
+    --sidebartext-color: #e0e0e0;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+#sidebarlink {
+    width: 90%;
+    display: block;
+    margin: 0px auto;
+}
+
+.blocked {
+    pointer-events: none;
+}
+
+.nav-left-Box>* {
+    font-family: avenir;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
+    background-color: #2f2f2f;
+    position: relative;
+}
+
+.everycontainer {
+    width: 80%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 35rem;
+    overflow: auto;
+    position: relative;
+    top: 7vh;
+}
+
+.dialog_box_container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.65); /* 0.75 */
+    z-index: 99999;
+}
+
+.dialog_box {
+    transition: 0.2s all linear;
+    width: 22rem;
+    padding: 25px;
+    background-color: #212223;
+    border-radius: 5px;
+    position: relative;
+    top: 5%;
+    box-shadow: 0px 20px 30px -10px;
+    /* 0px 10px 15px black; */
+    z-index: 99999;
+ 
+}
+
+.dialog_box h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.dialog_box p {
+    color: #fff;
+}
+
+.login_link {
+    width: 100%;
+    margin-top: 15%;
+    text-align: right;
+}
+
+.login_link #login {
+    text-decoration: none;
+    color: green;
+    text-transform: uppercase;
+    transition: 0.2s all linear;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.login_link #login:hover {
+    background-color: rgba(0, 128, 0, 0.15);
+}
+
+.clickgreen {
+    background-color: rgba(0, 128, 0, 0.5) !important;
+}
+
+small {
+    margin-left: 5px;
+    background: orange;
+    color: #3d3939;
+    padding: 0px 3px; /* 2px 3px; */
+    border-radius: 5px;
+    font-weight: 700;
+    position: relative;
+    bottom: 4px;
+}
+
+.small_disable {
+    background-color: rgba(255, 165, 0, 0.4) !important;
+}
+
+#grey {
+    width: 100%;
+    background-color: #393939;
+}
+
+.nav-left-Box {
+    width: 20%;
+    height: 100vh;
+    background-color: var(--sidebar-color);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 8;
+    overflow-y: scroll;
+    border-right: 1px solid #393939;
+}
+
+.logo {
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.logo img {
+    width: 50%;
+}
+
+.account-level,
+.viplevelbox {
+    width: 60%;
+    margin: 15px auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem; /* 3rem; */
+    text-transform: uppercase;
+    border: 2px solid rgb(149, 3, 0);
+    color: rgba(249, 49, 45, 1.0);
+    background-color: #382223;
+    white-space: nowrap;
+}
+
+.viplevelbox {
+    display: flex;
+    border: 2px solid var(--activebtn-color) !important;
+    color: var(--activebtn-color) !important;
+    background-color: var(--activebtnhover-color) !important;
+}
+
+.account-level h2,
+.viplevelbox h2 {
+    font-size: 20px; /* 22px; */
+}
+
+.side-menu-buttons {
+    width: 100%;
+    text-align: center;
+}
+
+.side-menu-buttons a {
+    width: 70%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.7rem;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: var(--active-color);
+    color: var(--sidebartext-color);
+    transition: 0.2s all linear;
+    margin: 0px auto 20px auto;
+}
+
+.side-menu-buttons a:hover {
+    background-color: var(--sidebtnhover-color);
+}
+
+.nav-left-Box-List,
+.logout {
+    width: 100%;
+    height: 2.5rem;
+    margin: 8px auto;
+    display: flex;
+    padding-left: 30px;
+    border-radius: 5px;
+    align-items: center;
+    transition: 0.2s all linear;
+    font-size: 15px; /* 13px; */
+    color: var(--sidebartext-color);
+    cursor: pointer;
+}
+
+.btnclicked {
+    background-color: var(--btnclick-color) !important;
+}
+
+.nav-left-Box-List i,
+.logout i {
+    font-size: 22px;
+    width: 10%;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-left-Box-List:hover {
+    background-color: var(--hover-color);
+}
+
+.nav-left-Box-List.active {
+    color: var(--active-color);
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.nav-left-Box-List.active:hover {
+    background-color: var(--activebtnhover-color);
+}
+
+/* this is the css for the blue disable button  */
+.disablebtn {
+    background-color: var(--disablebtn-color) !important;
+    color: var(--disablebtntext-color) !important;
+    cursor: default !important;
+    pointer-events: none;
+}
+
+/* this is the css for disable any selection */
+.disableselection {
+    color: var(--disablebtn-color) !important;
+    cursor: default !important;
+    pointer-events: none;
+}
+
+#customline {
+    width: 90%;
+    height: 1px;
+    margin: 0px auto;
+    background-color: #393939;
+}
+
+.logout {
+    color: rgba(249, 49, 45, 1.0);
+    width: 90%;
+    padding-left: 30px;
+    position: relative;
+    display: none;
+}
+
+.logout:hover {
+    background-color: #382223;
+}
+
+/* Here is the header css  */
+.headerBox {
+    width: 80%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 7vh;
+    /* Here you can change the color of header if you want */
+    background-color: var(--header-color);
+    display: flex;
+    z-index: 8;
+}
+
+/* This is the css for the title name on the top bar in desktop view
+just change none to Flex */
+.headerBox h2 {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 30px;
+    color: var(--sidebartext-color);
+}
+
+.menuBox {
+    display: none;
+}
+
+.headerProfile {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    justify-content: flex-end;
+    color: gray;
+    font-size: 25px;
+}
+
+.headerProfile i {
+    margin-right: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.vipmobil {
+    display: none;
+}
+
+.desktop-logout {
+    cursor: pointer;
+    width: 3.5rem;
+    height: 3rem;
+    display: flex;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s all linear;
+}
+
+.desktop-logout:hover {
+    color: #f44334;
+}
+
+.desktop-logout-active {
+    background-color: #382223;
+}
+
+.desktop-logout i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.faq {
+    width: 100%;
+    text-align: center;
+    color: var(--active-color);
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: default;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.trial-buttons,
+.side-menu-container,
+.logout-help {
+    width: 100%;
+}
+
+.hr {
+    width: 100%;
+    height: 1px;
+    background-color: #393939;
+    margin-bottom: 10px;
+}
+
+.hr2 {
+    margin: 30px auto 10px auto;
+}
+
+.nameBox {
+    font-size: 18px;
+}
+
+@media (min-width: 1920px) {
+    .headerBox,
+    .bodyBox iframe {
+        width: 80%;
+    }
+}
+
+@media (min-width: 2560px) {
+    .headerBox {
+        width: 85%;
+    }
+
+    .nav-left-Box {
+        width: 15%;
+    }
+}
+
+@media (min-width: 3840px) {
+    .headerBox {
+        width: 90%;
+    }
+
+    .nav-left-Box {
+        width: 10%;
+    }
+}
+
+@media (max-width: 1366px) {
+    /* .headerBox,
+    {
+        width: 77%;
+    } */
+}
+
+@media (max-width: 1280px) {
+    /* .headerBox,
+    .bodyBox iframe {
+        width: 75%;
+    } */
+}
+
+@media (max-width: 1192px) {
+    /* .headerBox,
+    .bodyBox iframe {
+        width: 73%;
+    } */
+}
+
+@media (max-width: 1024px) {
+    .log {
+        margin: 5px auto;
+    }
+
+    .headerBox h2 {
+        font-size: 25px;
+    }
+
+    .account-level,
+    .viplevelbox {
+        margin: 15px auto 20px auto;
+    }
+
+    .side-menu-buttons a {
+        width: 80%;
+        height: 1.6rem; /* 2rem */
+        font-size: 13px;
+    }
+
+    .account-level,
+    .viplevelbox {
+        height: 3rem;
+    }
+
+    .account-level h2,
+    .viplevelbox h2 {
+        font-size: 16px;
+    }
+
+    .nav-left-Box-List,
+    .logout {
+        font-size: 15px; /* 14px */
+        margin: 8px auto;
+        height: 2rem;
+        padding-left: 10px;
+    }
+
+    .nav-left-Box-List i,
+    .logout i {
+        margin-right: 35px;
+    }
+
+    .nav-left-Box {
+        width: 30%;
+    }
+
+    .everycontainer {
+        width: 70%;
+        margin-left: 30%;
+    }
+
+    .headerBox {
+        width: 70%;
+    }
+}
+
+@media (max-width: 912px) {
+    .dialog_box {
+        top: 8%;
+    }
+
+    .headerBox,
+    .bodyBox iframe {
+        width: 70%;
+    }
+
+    .headerBox {
+        height: 7vh;
+    }
+
+    .bodyBox iframe {
+        top: 7vh;
+        height: calc(100vh - 7vh);
+    }
+}
+
+@media (max-width: 850px) {
+    .headerBox {
+        width: 70%;
+    }
+}
+
+@media (max-width: 780px) {
+    /* .nav-left-Box {
+        width: 15.3rem;
+    }
+
+    .headerBox,
+    .bodyBox iframe {
+        width: 69%;
+    } */
+}
+
+@media (max-width: 700px) {
+    .nav-left-Box {
+        width: 75%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -75%;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+        z-index: 999999;
+        overflow-y: auto;
+    }
+
+    .menuBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .menuBox i {
+        font-size: 18px;
+        color: ghostwhite;
+        padding: 10px 13px;
+        border-radius: 50%;
+        margin-left: 10px;
+        transition: 0.2s all linear;
+    }
+
+    .menuBox i:hover {
+        background-color: gray;
+    }
+
+    .vipmobil {
+        display: block;
+        color: #fff;
+    }
+
+    .headerBox {
+        height: 7vh;
+        width: 100%;
+    }
+
+    .headerBox h2 {
+        display: block;
+        font-size: 16px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        color: var(--sidebartext-color);
+        font-weight: 500;
+    }
+
+    .faq {
+        font-size: 16px;
+    }
+
+    .nav-left-Box.active {
+        left: 0px;
+        width: 40%;
+    }
+
+    .headerProfile {
+        padding-left: 2vw;
+        font-size: 16px;
+    }
+
+    .headerProfile i {
+        font-size: 16px;
+        margin-right: 5px;
+        cursor: pointer;
+        padding: 10px 13px;
+        color: lightgray;
+        border-radius: 360px;
+        transition: 0.2s all linear;
+    }
+
+    .headerProfile i:hover {
+        background: gray;
+    }
+
+    .zhezhaoBox {
+        display: block;
+        position: fixed;
+        top: 0vw;
+        left: 100vw;
+        width: calc(100%);
+        height: calc(100vh);
+        z-index: 99;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, .5);
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .zhezhaoBox.active {
+        display: block;
+        position: fixed;
+        top: 0vw;
+        opacity: 1;
+        left: 40%;
+        width: calc(100%);
+        height: calc(100vh);
+        z-index: 99;
+        background-color: rgba(0, 0, 0, .3);
+    }
+
+    .bodyBox {
+        width: 100%;
+        height: calc(100vh - 7vh);
+        background-color: #fff;
+        position: fixed;
+        top: 7vh;
+        right: 0;
+        z-index: 1;
+        overflow-y: auto;
+    }
+
+    .bodyBox iframe {
+        width: 100%;
+        height: calc(100vh - 7vh);
+        top: 0vh;
+    }
+
+    .logout {
+        display: flex;
+    }
+
+    /* To make it display on mobile just remove none to block */
+    .desktop-logout {
+        display: none;
+    }
+
+    .nameBox {
+        font-size: 16px;
+    }
+
+    .logo img {
+        width: 50%;
+    }
+
+    .logo {
+        margin: 10px auto;
+    }
+
+    .account-level,
+    .viplevelbox {
+        margin: 10px auto;
+        height: 3rem;
+        width: 50%;
+    }
+
+    .side-menu-buttons {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .account-level h2,
+    .viplevelbox h2 {
+        font-size: 20px;
+    }
+
+    .side-menu-buttons a {
+        height: 1.8rem;
+        width: 70%;
+        margin: 0px auto 15px auto;
+        font-size: 14px;
+    }
+
+    .hr2 {
+        margin: 0px auto;
+    }
+
+    .hr {
+        margin-bottom: 10px;
+    }
+
+    .nav-left-Box-List {
+        margin: 5px auto;
+        height: 3rem;
+        font-size: 15px;
+    }
+
+    .nav-left-Box-List i,
+    .logout i {
+        font-size: 22px;
+    }
+
+    .logout {
+        font-size: 16px !important;
+        margin: 0px auto;
+        margin-top: 0px;
+    }
+
+    .nav-left-Box-List,
+    .logout {
+        padding-left: 25px;
+    }
+
+    .everycontainer {
+        width: 100%;
+        margin-left: 0%;
+    }
+}
+
+@media(max-width: 480px) {
+    .dialog_box_container {
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    small {
+        padding: 0px 0px;
+        /* width: 45px; */
+        height: 15px;
+        padding-left: 3px;
+        bottom: 9px;
+    }
+
+    .logo img {
+        width: 50%;
+    }
+
+    .logo {
+        margin: 20px auto;
+    }
+
+    .account-level,
+    .viplevelbox {
+        margin: 10px auto 20px auto;
+        height: 3rem;
+        width: 50%;
+    }
+
+    .side-menu-buttons {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .account-level h2,
+    .viplevelbox h2 {
+        font-size: 20px;
+    }
+
+    .side-menu-buttons a {
+        height: 1.85rem;
+        width: 80%;
+        margin: 0px auto 15px auto;
+        font-size: 13px;
+        font-weight: lighter;
+    }
+
+    .hr2 {
+        margin: 0px auto;
+    }
+
+    .hr {
+        margin-bottom: 10px;
+    }
+
+    .nav-left-Box.active {
+        left: 0px;
+        width: 75%;
+    }
+
+    .nav-left-Box-List {
+        margin: 5px auto;
+        height: 2.8rem;
+        font-size: 15px;
+    }
+
+    .nav-left-Box-List,
+    .logout {
+        padding-left: 11px;
+    }
+
+    .nav-left-Box-List i,
+    .logout i {
+        font-size: 22px;
+    }
+
+    .logout {
+        font-size: 16px !important;
+        margin: 0px auto;
+        margin-top: 0px;
+        height: 2.8rem;
+    }
+
+    .bodyBox,
+    .bodyBox iframe {
+        height: calc(100vh - 7vh);
+    }
+}
+
+@media (max-width: 375px) {
+    .logo img {
+        width: 50%;
+    }
+
+    .logo {
+        margin: 10px auto;
+    }
+
+    .account-level,
+    .viplevelbox {
+        margin: 0px auto 10px auto;
+        height: 2.5rem;
+    }
+    
+    .account-level h2,
+    .viplevelbox h2 {
+        font-size: 18px;
+    }
+
+    .side-menu-buttons a {
+        height: 1.6rem;
+        font-size: 13px;
+    }
+
+    .nav-left-Box-List {
+        margin: 10px auto;
+        height: 2rem;
+        font-size: 15px;
+    }
+
+    .hr {
+        margin-bottom: 0px;
+    }
+
+    .logout {
+        margin-top: 0px;
+        height: 2rem;
+    }
+}
+
+@media (max-width: 320px) { /* 300px */
+    .logo img {
+        width: 50%;
+    }
+
+    .logo {
+        margin: 10px auto;
+    }
+
+    .account-level,
+    .viplevelbox {
+        margin: 0px auto 10px auto;
+        height: 2.5rem;
+        width: 60%;
+    }
+
+    .account-level h2,
+    .viplevelbox h2 {
+        font-size: 18px;
+    }
+
+    .side-menu-buttons a {
+        height: 1.6rem;
+        font-size: 13px;
+        width: 70%;
+        margin: 0px auto 5px auto;
+    }
+
+    .nav-left-Box-List {
+        margin: 10px auto;
+        height: 2rem;
+        font-size: 15px;
+    }
+
+    .logout {
+        height: 2rem;
+    }
+}

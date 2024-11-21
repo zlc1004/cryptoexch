@@ -1,0 +1,321 @@
+@font-face {
+    font-family: avenir;
+	src: url('/files/avenirr.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: avenir;
+}
+
+:root {
+    --main-color: #141623;
+    --secondary-color: #2f313f;
+    --border-color: #303240;
+    --label-color: #c6cbcf;
+ /* #c5cbce; */
+    --focus-color: #428bca;
+ /* #1976d3; */
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--activebtnhover-color);
+}
+
+body {
+    background-color: var(--secondary-color);
+}
+
+.headerBox {
+    background-color: var(--main-color);
+    height: 7vh;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.logolefttop {
+    padding-left: 40px;
+}
+
+.loginBox {
+    width: 500px;
+    background-color: var(--main-color);
+    margin: 10px auto 20px auto;
+    padding: 30px 40px 20px 40px;
+    border-radius: 5px;
+}
+
+.errors {
+    text-align: center;
+    color: red;
+    /* font-weight: 400; */
+    margin-bottom: 10px;
+}
+
+.tfrow {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.tfrow .label {
+    color: var(--label-color);
+    margin-bottom: 3px;
+    flex-shrink: 0;
+    font-size: 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.tfrow input {
+    outline: none;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 1px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--label-color);
+    height: 2rem;
+    transition: 0.2s all linear;
+}
+
+.tfrow input:focus {
+    border: 1px solid #428bca;
+}
+
+.tfrow input::placeholder {
+    font-size: 15px;
+}
+
+select {
+    width: 100%;
+    height: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    color: gray;
+    padding: 10px;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+}
+
+select:focus {
+    border: 1px solid var(--focus-color);
+}
+
+.key {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.key i {
+    width: 12%;
+    background-color: gray;
+    height: 2rem;
+    color: var(--label-color);
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.key input {
+    width: 88%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.terms {
+    width: 95%;
+    margin: 30px auto 20px auto;
+}
+
+.checkbox {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.checkbox p {
+    margin-left: 10px;
+    width: 100%;
+    color: var(--label-color);
+}
+
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
+    accent-color: #428bca;
+}
+
+#checkb {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    color: black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid var(--border-color);
+    position: relative;
+    left: 0px;
+	/* 	top: 13px; */
+}
+
+#checkb:checked {
+    background: #428bca;
+    accent-color: #428bca;
+}
+
+.tfrow .dldl {
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    color: var(--label-color);
+    background-color: #1976d3; /* var(--focus-color); */
+    border: none;
+    border-radius: 5px;
+    margin: 10px auto;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s all linear;
+    font-weight: 600;
+}
+
+#writing {
+    width: 100%;
+    color: orange;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid orange;
+}
+
+.signup {
+    background: #141623;
+    width: 100%;
+	/* 	padding: 15px; */
+    border-radius: 5px;
+    margin: 0px auto;
+    margin-top: 18px;
+    color: ghostwhite;
+    text-align: center;
+}
+
+.hr {
+    width: 100%;
+    height: 2px;
+    background-color: var(--border-color);
+}
+
+.signup a {
+    text-decoration: none;
+    color: var(--focus-color);
+    margin-left: 4px;
+}
+
+.signup a:hover {
+    color: var(--focus-color);
+}
+
+.instruction {
+    color: var(--label-color);
+    margin-bottom: 18px;
+}
+
+.forgot-heading {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.forgot-heading h1 {
+    font-weight: lighter;
+    color: var(--label-color);
+}
+
+@media (max-width: 480px) {
+    .dldl {
+        height: 2.5rem;
+    }
+
+    .loginBox {
+        width: 350px;
+    }
+
+    .key i {
+        font-size: 15px;
+        width: 15%;
+    }
+
+    .checkbox p {
+        font-size: 13px;
+    }
+
+    #writing {
+        font-size: 13px;
+    }
+
+    .headerBox {
+        height: 6vh;
+    }
+
+    .logolefttop {
+        padding-left: 20px;
+    }
+
+    .logolefttop #imgone {
+        width: 38px;
+    }
+
+    .logolefttop #imgtwo {
+        width: 80px;
+    }
+
+    .forgot-heading h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 375px) {
+    .loginBox {
+        width: 320px;
+    }
+
+    .key i {
+        font-size: 12px;
+        width: 18%;
+    }
+}
+
+@media (max-width: 320px) { /* 280px */
+    .loginBox {
+        width: 250px;
+        padding: 30px;
+    }
+
+    .tfrow input::placeholder,
+	select {
+        font-size: 12px;
+    }
+
+    .key i {
+        font-size: 12px;
+        width: 18%;
+    }
+}

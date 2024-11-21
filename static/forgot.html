@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>kobeex | Forgot Password</title>
+    <link rel="stylesheet" type="text/css" href="/css/forgot.css" />
+    <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="bodyBox">
+      <div class="forgot-heading">
+        <h1>RESET PASSWORD</h1>
+      </div>
+      <div class="loginBox">
+        <form method="post" action="/forgot">
+          <div id="filter" class="instruction">
+            <p>Please enter your credentials below to reset your password</p>
+          </div>
+          <div class="errors"></div>
+          <div class="tfrow">
+            <div class="label">Username</div>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              value=""
+              pattern="[A-Za-z0-9]{5,15}"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="tfrow">
+            <div class="label">New Password</div>
+            <input
+              type="password"
+              id="password"
+              name="newpass"
+              maxlength="60"
+              placeholder="Create new password"
+              value=""
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="tfrow">
+            <div class="label">Confirm Password</div>
+            <input
+              type="password"
+              id="cpass"
+              name="confirmpass"
+              maxlength="60"
+              placeholder="Confirm new password"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="tfrow">
+            <div class="label">Secure Key</div>
+            <div class="key">
+              <input
+                type="password"
+                id="secure_key"
+                name="secure_key"
+                maxlength="60"
+                placeholder="Enter your secure key"
+                value=""
+                autocomplete="off"
+                required
+              />
+              <i class="fa-solid fa-lock"></i>
+            </div>
+          </div>
+          <div class="tfrow">
+            <button type="submit" name="submit" class="dldl">Submit</button>
+          </div>
+          <div class="hr"></div>
+          <div class="signup">Back to&nbsp;<a href="/login">Login</a></div>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(".dldl").on("click", function () {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var cpass = $("#cpass").val();
+        var secure_key = $("#secure_key").val();
+
+        $(this).css("background-color", "#393939");
+        $(this).css("color", "#515151");
+
+        if (
+          username == "" ||
+          password == "" ||
+          cpass == "" ||
+          secure_key == ""
+        ) {
+          if (username == "") {
+            $("#username").css("border", "1px solid #d74a59");
+          }
+
+          if (password == "") {
+            $("#password").css("border", "1px solid #d74a59");
+          }
+
+          if (cpass == "") {
+            $("#cpass").css("border", "1px solid #d74a59");
+          }
+
+          if (secure_key == "") {
+            $("#secure_key").css("border", "1px solid #d74a59");
+          }
+
+          $(this).css("background-color", "#4A91D6");
+          $(this).css("color", "ghostwhite");
+        }
+      });
+
+      $(".dldl").on("mouseenter", function () {
+        $(this).css("background-color", "#1876D3");
+      });
+      $(".dldl").on("mouseleave", function () {
+        $(this).css("background-color", "#428bca");
+      });
+      $("input").on("click", function () {
+        $(this).css("border", "1px solid #428bca");
+      });
+      $("input").on("blur", function () {
+        $(this).css("border", "1px solid #303240");
+      });
+    </script>
+  </body>
+</html>

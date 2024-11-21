@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="max-age=200" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Kobeex Protocol</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+    <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="login_main_container">
+      <div class="headerBox">
+        <div class="logolefttop">
+          <img
+            src="/files/favicon.png"
+            style="max-width: 60px; padding-left: 7px"
+            id="imgone"
+          />
+          <img
+            src="/banner"
+            style="transform: scale(1.2); max-width: 125px; padding-left: 3px"
+            id="imgtwo"
+          />
+        </div>
+      </div>
+      <div class="bodyBox">
+        <div class="login-box-container">
+          <div class="banner-logo">
+            <img src="/files/favicon.png" id="imgone" />
+            <img src="/banner" id="imgtwo" />
+          </div>
+          <div class="loginBox">
+            <form method="post" action="/login">
+              <div class="errors"></div>
+              <div class="tfrow">
+                <div class="label">Username</div>
+                <input
+                  type="text"
+                  name="username"
+                  id="name"
+                  placeholder="Enter your username"
+                  value=""
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="checkbox remember">
+                <input type="checkbox" name="" id="checkb" />
+                <p>Remember me and trust this browser.</p>
+              </div>
+              <div class="tfrow">
+                <div class="label">Password</div>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Enter your password"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="checkbox">
+                <a href="/forgot">Forgot your password?</a>
+              </div>
+
+              <div class="tfrow">
+                <button type="submit" name="submit" class="dldl">Login</button>
+              </div>
+            </form>
+          </div>
+          <div class="signup">
+            No account yet?&nbsp;<a href="/register">Open an account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(".dldl").on("click", function () {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var captcha = $("#captcha").val();
+
+        $(this).css("background-color", "#393939");
+        $(this).css("color", "#515151");
+
+        if (username == "" || password == "" || captcha == "") {
+          if (username == "") {
+            $("#username").css("border", "1px solid #d74a59");
+          }
+
+          if (password == "") {
+            $("#password").css("border", "1px solid #d74a59");
+          }
+
+          if (captcha == "") {
+            $("#captcha").css("border", "1px solid #d74a59");
+          }
+
+          $(this).css("background-color", "#4A91D6");
+          $(this).css("color", "ghostwhite");
+        } else {
+          $(this).css("background-color", "#393939");
+          $(this).css("color", "#515151");
+        }
+      });
+
+      $(".dldl").on("mouseenter", function () {
+        $(this).css("background-color", "#1876D3");
+      });
+
+      $(".dldl").on("mouseleave", function () {
+        $(this).css("background-color", "#428bca");
+      });
+
+      $("input").on("click", function () {
+        $(this).css("border", "1px solid #428bca");
+      });
+
+      $("input").on("blur", function () {
+        $(this).css("border", "1px solid #303240");
+      });
+    </script>
+  </body>
+</html>
