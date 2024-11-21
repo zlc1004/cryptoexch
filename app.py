@@ -95,16 +95,16 @@ def getIP(req: flask.Request) -> str:
 
 @app.route("/")
 def index():
-    log(flask.request.method, getIP(flask.request), flask.request.remote_addr)
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     return flask.send_from_directory("static", "index.html")
 
 
 @app.route("/deposit")
 def deposit():
-    log(flask.request.method, getIP(flask.request), flask.request.remote_addr)
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
-        flask.request.remote_addr,
+        getIP(flask.request),
         flask.request.cookies.get("token"),
     ):
         return flask.redirect("/login")
@@ -116,7 +116,7 @@ def withdraw():
     log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
     if not validateToken(
         flask.request.cookies.get("username", ""),
-        flask.request.remote_addr,
+        getIP(flask.request),
         flask.request.cookies.get("token"),
     ):
         return flask.redirect("/login")
@@ -131,7 +131,7 @@ def upgrade():
     log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
     if not validateToken(
         flask.request.cookies.get("username", ""),
-        flask.request.remote_addr,
+        getIP(flask.request),
         flask.request.cookies.get("token"),
     ):
         return flask.redirect("/login")
@@ -161,7 +161,7 @@ def login():
     elif flask.request.method == "GET":
         if validateToken(
             flask.request.cookies.get("username", ""),
-            flask.request.remote_addr,
+            getIP(flask.request),
             flask.request.cookies.get("token"),
         ):
             return flask.redirect("/home")
@@ -173,7 +173,7 @@ def home():
     log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
     if not validateToken(
         flask.request.cookies.get("username", ""),
-        flask.request.remote_addr,
+        getIP(flask.request),
         flask.request.cookies.get("token"),
     ):
         return flask.redirect("/login")
@@ -185,7 +185,7 @@ def forgot():
     log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
     if not validateToken(
         flask.request.cookies.get("username", ""),
-        flask.request.remote_addr,
+        getIP(flask.request),
         flask.request.cookies.get("token"),
     ):
         return flask.redirect("/login")
@@ -218,7 +218,7 @@ def invoice(invoiceType):
     log(
         flask.request.method,
         flask.request.full_path + " " + invoiceType,
-        flask.request.remote_addr,
+        getIP(flask.request)
     )
     invoiceType = invoiceType.split("-")
     if (invoiceType[0] in getAddress().keys()) and (invoiceType[1] in list("1234")):
@@ -249,7 +249,7 @@ def success():
         "Transaction Successful, txid: " + flask.request.form["txid"],
         flask.request.remote_addr,
     )
-    logTxid(flask.request.form["txid"], flask.request.remote_addr)
+    logTxid(flask.request.form["txid"], getIP(flask.request))
     return flask.send_from_directory("static", "success.html")
 
 
