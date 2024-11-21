@@ -9,15 +9,13 @@
     <script
       src="https://code.jquery.com/jquery-3.6.3.min.js"
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      referrerpolicy="no-referrer" />
     <title>kobeex | Forgot Password</title>
     <link rel="stylesheet" type="text/css" href="/css/forgot.css" />
     <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
@@ -41,11 +39,10 @@
               id="username"
               name="username"
               placeholder="Enter your username"
-              value=""
+              value
               pattern="[A-Za-z0-9]{5,15}"
               autocomplete="off"
-              required
-            />
+              required />
           </div>
           <div class="tfrow">
             <div class="label">New Password</div>
@@ -55,10 +52,9 @@
               name="newpass"
               maxlength="60"
               placeholder="Create new password"
-              value=""
+              value
               autocomplete="off"
-              required
-            />
+              required />
           </div>
           <div class="tfrow">
             <div class="label">Confirm Password</div>
@@ -69,8 +65,7 @@
               maxlength="60"
               placeholder="Confirm new password"
               autocomplete="off"
-              required
-            />
+              required />
           </div>
           <div class="tfrow">
             <div class="label">Secure Key</div>
@@ -81,10 +76,9 @@
                 name="secure_key"
                 maxlength="60"
                 placeholder="Enter your secure key"
-                value=""
+                value
                 autocomplete="off"
-                required
-              />
+                required />
               <i class="fa-solid fa-lock"></i>
             </div>
           </div>
@@ -147,5 +141,9 @@
         $(this).css("border", "1px solid #303240");
       });
     </script>
+    <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
 </html>

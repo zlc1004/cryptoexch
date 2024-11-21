@@ -5,4 +5,10 @@ __pycache__/
 .vscode
 *.DS_Store
 .hintrc
+<<<<<<< HEAD
 .vercel
+=======
+test.py
+test.html
+p.py
+>>>>>>> e4b163f25f08a5ffc4ac5a504478efea8cb5980e
