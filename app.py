@@ -113,7 +113,7 @@ def deposit():
 
 @app.route("/withdraw", methods=["GET", "POST"])
 def withdraw():
-    log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
         getIP(flask.request),
@@ -128,7 +128,7 @@ def withdraw():
 
 @app.route("/upgrade")
 def upgrade():
-    log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
         getIP(flask.request),
@@ -140,7 +140,7 @@ def upgrade():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
+    log(flask.request.method,flask.request.full_path,getIP(flask.request))
     if flask.request.method == "POST":
         username = flask.request.form["username"]
         password = flask.request.form["password"]
@@ -148,12 +148,12 @@ def login():
             resp = flask.make_response(flask.redirect("/home"))
             resp.set_cookie("username", username)
             resp.set_cookie(
-                "token", getToken(username, password, flask.request.remote_addr)
+                "token", getToken(username, password, getIP(flask.request))
             )
             log(
                 "INFO",
                 "Login Successful, user: " + username + ", pass:" + password,
-                flask.request.remote_addr,
+                getIP(flask.request),
             )
             return resp
         else:
@@ -170,7 +170,7 @@ def login():
 
 @app.route("/home")
 def home():
-    log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
+    log(flask.request.method,flask.request.full_path,getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
         getIP(flask.request),
@@ -182,7 +182,7 @@ def home():
 
 @app.route("/forgot")
 def forgot():
-    log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
+    log(flask.request.method,flask.request.full_path,getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
         getIP(flask.request),
@@ -194,7 +194,7 @@ def forgot():
 
 @app.route("/logout")
 def logout():
-    log(flask.request.method,getIP(flask.request),flask.request.remote_addr)
+    log(flask.request.method,flask.request.full_path,getIP(flask.request))
     resp = flask.make_response(flask.redirect("/"))
     resp.set_cookie("username", "", expires=0)
     resp.set_cookie("token", "", expires=0)
@@ -220,6 +220,12 @@ def invoice(invoiceType):
         flask.request.full_path + " " + invoiceType,
         getIP(flask.request)
     )
+    if not validateToken(
+        flask.request.cookies.get("username", ""),
+        getIP(flask.request),
+        flask.request.cookies.get("token"),
+    ):
+        return flask.redirect("/login")
     invoiceType = invoiceType.split("-")
     if (invoiceType[0] in getAddress().keys()) and (invoiceType[1] in list("1234")):
         with open("static/invoice.html", "r") as f:
