@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="max-age=200" />
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Kobeex Protocol</title>
     <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/roboto" />
@@ -24,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/css/invite.css" />
     <link rel="stylesheet" type="text/css" href="/css/chat.css" />
   </head>
+
   <body>
     <noscript>To best view this website, javascript must be enabled!</noscript>
     <div class="zhezhaoBox"></div>
@@ -43,9 +40,11 @@
     </div>
     <div class="nav-left-Box">
       <div class="logo">
-        <img src="/banner" style="padding-top: 10px" alt="" />
+        <img src="/banner" style="padding-top: 10px" alt />
       </div>
-      <div class="account-level"><h2>Trial Mode</h2></div>
+      <div class="account-level">
+        <h2>Trial Mode</h2>
+      </div>
       <div class="side-menu-buttons">
         <a href="/deposit" class="button-shadow" id="deposit"> Deposit </a>
         <!-- <a href="/transfer" class="button-shadow">
@@ -146,7 +145,7 @@
               <h1 style="color: #d3d3d3">Your referrals</h1>
               <div class="referal_dropdown_container">
                 <div class="drop_down">
-                  <select name="drop_count" id="">
+                  <select name="drop_count" id>
                     <option value="10">10</option>
                     <option value="10">25</option>
                     <option value="10">50</option>
@@ -154,11 +153,9 @@
                 </div>
                 <div class="referral_search">
                   <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-                  <input
-                    type="text"
+                  <input type="text"
                     placeholder="&#xf002;&nbsp;&nbsp;&nbsp;Search by user"
-                    style="font-family: Arial, FontAwesome"
-                  />
+                    style="font-family: Arial, FontAwesome" />
                 </div>
               </div>
               <div class="referral_row">
@@ -174,7 +171,7 @@
               <h1 style="color: #d3d3d3">Your earnings</h1>
               <div class="referal_dropdown_container">
                 <div class="drop_down">
-                  <select name="" id="">
+                  <select name id>
                     <option value="10">10</option>
                     <option value="10">25</option>
                     <option value="10">50</option>
@@ -182,11 +179,9 @@
                 </div>
                 <div class="referral_search">
                   <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-                  <input
-                    type="text"
+                  <input type="text"
                     placeholder="&#xF002;&nbsp;&nbsp;&nbsp;Search by currency"
-                    style="font-family: Arial, FontAwesome"
-                  />
+                    style="font-family: Arial, FontAwesome" />
                 </div>
               </div>
               <div class="referral_row">
@@ -205,120 +200,125 @@
     <script type="text/javascript" src="/files/action.js"></script>
 
     <script>
-      $("#username")[0].innerHTML=document.cookie.split("; ")[0].split("=")[1];
+    $("#username")[0].innerHTML = document.cookie.split("; ")[0].split("=")[1];
 
-      $(".input").on("input", function () {
-        var inputValue = $(this).val();
-        $(this).css("border", "1px solid #42474A");
+    $(".input").on("input", function () {
+      var inputValue = $(this).val();
+      $(this).css("border", "1px solid #42474A");
 
-        if (inputValue.length > 8) {
-          $(this).val(inputValue.slice(0, 8));
-        }
-      });
-
-      $("#copy_function_one").on("click", function () {
-        $(".clipboard").css({
-          display: "flex",
-          transform: "scale(1)",
-          opacity: "1",
-        });
-        $(this).css("background-color", "var(--btnhover-color)");
-        $(this).css("color", "#333");
-
-        setTimeout(function () {
-          $(".clipboard").css({
-            display: "none",
-            transform: "scale(0)",
-            opacity: "0",
-          });
-          $("#copy_function_one").css("background-color", "#282a2b");
-          $("#copy_function_one").css("color", "var(--boxtext-color)");
-        }, 1000);
-
-        var addresscopy = $(this).parent().find("#code").text();
-
-        navigator.clipboard.writeText(addresscopy);
-      });
-
-      $("#copy_function_two").on("click", function () {
-        $(".clipboard").css({
-          display: "flex",
-          transform: "scale(1)",
-          opacity: "1",
-        });
-        $(this).css("background-color", "var(--btnhover-color)");
-        $(this).css("color", "#333");
-
-        setTimeout(function () {
-          $(".clipboard").css({
-            display: "none",
-            transform: "scale(0)",
-            opacity: "0",
-          });
-          $("#copy_function_two").css("background-color", "#282a2b");
-          $("#copy_function_two").css("color", "var(--boxtext-color)");
-        }, 1000);
-
-        var addresscopy = $(this).parent().find("#link").text();
-
-        navigator.clipboard.writeText(addresscopy);
-      });
-
-      $(".clip-close").on("click", function () {
-        $(this).parent(".clipboard").css("transform", "scale(0)");
-      });
-
-      $("#submit-button").on("click", function () {
-        if ($(".input").val() == "") {
-          $(".input").css("border", "1px solid #d74a59");
-
-          event.preventDefault();
-        } else {
-          event.preventDefault();
-
-          $(this).addClass("btnclick-color");
-          $(this).find("p").hide();
-          $(this)
-            .closest(".submit_button")
-            .find(".spinning-wheel")
-            .css("display", "block");
-
-          setTimeout(function () {
-            $(".submit_button")
-              .find("#submit-button")
-              .removeClass("btnclick-color");
-            $(".submit_button").find("#submit-button").find("p").show();
-            $(".submit_button").find(".spinning-wheel").css("display", "none");
-            $("#myform").submit();
-          }, 1000);
-        }
-      });
-
-      function displayBox() {
-        $(".black_screen").css("display", "block");
-        $(".dialog_box").css("display", "block");
+      if (inputValue.length > 8) {
+        $(this).val(inputValue.slice(0, 8));
       }
+    });
 
-      $("#login").on("mousedown", function () {
-        $(this).addClass("clickgreen");
+    $("#copy_function_one").on("click", function () {
+      $(".clipboard").css({
+        display: "flex",
+        transform: "scale(1)",
+        opacity: "1",
       });
+      $(this).css("background-color", "var(--btnhover-color)");
+      $(this).css("color", "#333");
 
-      $("#login").on("mouseup", function () {
-        $(this).removeClass("clickgreen");
+      setTimeout(function () {
+        $(".clipboard").css({
+          display: "none",
+          transform: "scale(0)",
+          opacity: "0",
+        });
+        $("#copy_function_one").css("background-color", "#282a2b");
+        $("#copy_function_one").css("color", "var(--boxtext-color)");
+      }, 1000);
+
+      var addresscopy = $(this).parent().find("#code").text();
+
+      navigator.clipboard.writeText(addresscopy);
+    });
+
+    $("#copy_function_two").on("click", function () {
+      $(".clipboard").css({
+        display: "flex",
+        transform: "scale(1)",
+        opacity: "1",
+      });
+      $(this).css("background-color", "var(--btnhover-color)");
+      $(this).css("color", "#333");
+
+      setTimeout(function () {
+        $(".clipboard").css({
+          display: "none",
+          transform: "scale(0)",
+          opacity: "0",
+        });
+        $("#copy_function_two").css("background-color", "#282a2b");
+        $("#copy_function_two").css("color", "var(--boxtext-color)");
+      }, 1000);
+
+      var addresscopy = $(this).parent().find("#link").text();
+
+      navigator.clipboard.writeText(addresscopy);
+    });
+
+    $(".clip-close").on("click", function () {
+      $(this).parent(".clipboard").css("transform", "scale(0)");
+    });
+
+    $("#submit-button").on("click", function () {
+      if ($(".input").val() == "") {
+        $(".input").css("border", "1px solid #d74a59");
+
+        event.preventDefault();
+      } else {
+        event.preventDefault();
+
+        $(this).addClass("btnclick-color");
+        $(this).find("p").hide();
+        $(this)
+          .closest(".submit_button")
+          .find(".spinning-wheel")
+          .css("display", "block");
 
         setTimeout(function () {
-          $("#login")
-            .closest(".login_link")
-            .parent(".dialog_box")
-            .css("display", "none");
-          $("#login")
-            .closest(".login_link")
-            .parent(".dialog_box")
-            .parent(".invite_main_wrapper")
-            .find(".black_screen")
-            .css("display", "none");
-        }, 300);
-      });
-    </script>
+          $(".submit_button")
+            .find("#submit-button")
+            .removeClass("btnclick-color");
+          $(".submit_button").find("#submit-button").find("p").show();
+          $(".submit_button").find(".spinning-wheel").css("display", "none");
+          $("#myform").submit();
+        }, 1000);
+      }
+    });
+
+    function displayBox() {
+      $(".black_screen").css("display", "block");
+      $(".dialog_box").css("display", "block");
+    }
+
+    $("#login").on("mousedown", function () {
+      $(this).addClass("clickgreen");
+    });
+
+    $("#login").on("mouseup", function () {
+      $(this).removeClass("clickgreen");
+
+      setTimeout(function () {
+        $("#login")
+          .closest(".login_link")
+          .parent(".dialog_box")
+          .css("display", "none");
+        $("#login")
+          .closest(".login_link")
+          .parent(".dialog_box")
+          .parent(".invite_main_wrapper")
+          .find(".black_screen")
+          .css("display", "none");
+      }, 300);
+    });
+  </script>
+    <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
+
 </html>

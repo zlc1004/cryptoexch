@@ -5,3 +5,6 @@ __pycache__/
 .vscode
 *.DS_Store
 .hintrc
+test.py
+test.html
+p.py

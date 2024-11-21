@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="max-age=200" />
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Kobeex Protocol</title>
     <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/roboto" />
     <link rel="stylesheet" type="text/css" href="/css/menu.css" />
     <link rel="stylesheet" type="text/css" href="/css/deposit.css" />
   </head>
+
   <body>
     <noscript>To best view this website, javascript must be enabled!</noscript>
     <div class="zhezhaoBox"></div>
@@ -42,9 +39,11 @@
     </div>
     <div class="nav-left-Box">
       <div class="logo">
-        <img src="/banner" style="padding-top: 10px" alt="" />
+        <img src="/banner" style="padding-top: 10px" alt />
       </div>
-      <div class="account-level"><h2>Trial Mode</h2></div>
+      <div class="account-level">
+        <h2>Trial Mode</h2>
+      </div>
       <div class="side-menu-buttons">
         <a class="button-shadow" id="deposit"> Deposit </a>
         <!-- <a href="/transfer" class="button-shadow">
@@ -108,18 +107,10 @@
             <div class="drop-down">
               <div class="custom-select">
                 <div class="selected-option" name="BTC">
-                  <input
-                    type="hidden"
-                    name="coin_short"
-                    id="coin_short"
-                    value="BTC"
-                  />
-                  <input
-                    type="hidden"
-                    name="coin-value"
-                    id="coin-value"
-                    value=""
-                  />
+                  <input type="hidden" name="coin_short" id="coin_short"
+                    value="BTC" />
+                  <input type="hidden" name="coin-value" id="coin-value"
+                    value />
                   <img src="/icons/BTC.png" />
                   <span>
                     <span id="coin-name">BTC</span>
@@ -236,11 +227,8 @@
           </div>
           <h3 id="qr_heading">Scan QR Code</h3>
           <div class="qr_img">
-            <img
-              src="/address/bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy"
-              draggable="false"
-              alt=""
-            />
+            <img src="/address/bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy"
+              draggable="false" alt />
           </div>
           <div class="long_message_box">
             <div class="long_box_content">
@@ -255,10 +243,8 @@
           <div class="button_group">
             <!-- <button class="change_currency_button">CHANGE CURRENCY</button> -->
             <button class="back_button">Change Currency</button>
-            <button
-              class="dashboard_button"
-              onclick="setTimeout(function() { location.href = '/home'; }, 200);"
-            >
+            <button class="dashboard_button"
+              onclick="setTimeout(function() { location.href = '/home'; }, 200);">
               DASHBOARD
             </button>
           </div>
@@ -267,340 +253,345 @@
     </div>
     <script type="text/javascript" src="/files/action.js"></script>
     <script>
-      $("#username")[0].innerHTML=document.cookie.split("; ")[0].split("=")[1];
-      $(".button_group")
-        .find("button")
-        .on("mousedown", function () {
-          $(this).addClass("click_btn");
-        });
-
-      $(".button_group")
-        .find("button")
-        .on("mouseup", function () {
-          $(this).removeClass("click_btn");
-        });
-
-      $(".new_address_button")
-        .find("button")
-        .on("mousedown", function () {
-          $(this).addClass("click_btn");
-        });
-
-      $(".new_address_button")
-        .find("button")
-        .on("mouseup", function () {
-          $(this).removeClass("click_btn");
-        });
-
-      $(".change_currency_button").on("mousedown", function () {
+    $("#username")[0].innerHTML = document.cookie.split("; ")[0].split("=")[1];
+    $(".button_group")
+      .find("button")
+      .on("mousedown", function () {
         $(this).addClass("click_btn");
       });
 
-      $(".back_button").on("mousedown", function () {
-        $(this).addClass("click_btc");
-      });
-
-      $(".back_button").on("mouseup", function () {
+    $(".button_group")
+      .find("button")
+      .on("mouseup", function () {
         $(this).removeClass("click_btn");
-        $(".continue_btn").addClass("continue_disable_btn");
-        $(".drop_down_container").css("display", "flex");
-        $(".container").css("display", "none");
-        $(".continue_btn").css("display", "block");
-        $(".level_one").find("p").css("display", "block");
-        $(".level_one").find("i").css("display", "none");
-        $(".level_two").css("background-color", "gray");
       });
 
-      $("#submit_btn").on("click", function () {
-        event.preventDefault();
-
-        $(this).addClass("btnclick-color");
-        $(this).find("p").hide();
-
-        // $(this).closest('.submit_btn').find('.spining-wheel').css('display', 'block');
-        $(".spining_wheel_two").css("display", "block");
-
-        setTimeout(function () {
-          $(".submit_btn").find("button").removeClass("btnclick-color");
-          $(".submit_btn").find("button").find("p").show();
-          $(".spining_wheel_two").css("display", "none");
-          $("#myform").submit();
-        }, 2065);
+    $(".new_address_button")
+      .find("button")
+      .on("mousedown", function () {
+        $(this).addClass("click_btn");
       });
 
-      $(".custom-select .selected-option").on("click", function () {
-        $(this).parent().toggleClass("open");
-        $(".options-list").toggleClass("height");
+    $(".new_address_button")
+      .find("button")
+      .on("mouseup", function () {
+        $(this).removeClass("click_btn");
       });
 
-      $(".custom-select .options-list li").on(
-        "touchstart touchend",
-        function (e) {
-          // e.preventDefault();
-          $(this).toggleClass("touchhovercolor");
-        }
+    $(".change_currency_button").on("mousedown", function () {
+      $(this).addClass("click_btn");
+    });
+
+    $(".back_button").on("mousedown", function () {
+      $(this).addClass("click_btc");
+    });
+
+    $(".back_button").on("mouseup", function () {
+      $(this).removeClass("click_btn");
+      $(".continue_btn").addClass("continue_disable_btn");
+      $(".drop_down_container").css("display", "flex");
+      $(".container").css("display", "none");
+      $(".continue_btn").css("display", "block");
+      $(".level_one").find("p").css("display", "block");
+      $(".level_one").find("i").css("display", "none");
+      $(".level_two").css("background-color", "gray");
+    });
+
+    $("#submit_btn").on("click", function () {
+      event.preventDefault();
+
+      $(this).addClass("btnclick-color");
+      $(this).find("p").hide();
+
+      // $(this).closest('.submit_btn').find('.spining-wheel').css('display', 'block');
+      $(".spining_wheel_two").css("display", "block");
+
+      setTimeout(function () {
+        $(".submit_btn").find("button").removeClass("btnclick-color");
+        $(".submit_btn").find("button").find("p").show();
+        $(".spining_wheel_two").css("display", "none");
+        $("#myform").submit();
+      }, 2065);
+    });
+
+    $(".custom-select .selected-option").on("click", function () {
+      $(this).parent().toggleClass("open");
+      $(".options-list").toggleClass("height");
+    });
+
+    $(".custom-select .options-list li").on(
+      "touchstart touchend",
+      function (e) {
+        // e.preventDefault();
+        $(this).toggleClass("touchhovercolor");
+      }
+    );
+
+    $(".custom-select .options-list li").on("click", function () {
+      var selectedValue = $(this).data("value");
+      var selectedImage = $(this).data("image");
+      var abbrcoin = $(this).find("div").find("#coin-name").text();
+      var fullcoinname = $(this).find("div").find("#full_name").text();
+      // var value = $(this).find('span').find('#value').html();
+      var name = $(this).attr("name");
+
+      $(this)
+        .closest(".custom-select")
+        .find(".selected-option")
+        .find("#coin-name")
+        .text(abbrcoin);
+      $(this)
+        .closest(".custom-select")
+        .find(".selected-option")
+        .find("#value")
+        .text(fullcoinname);
+      // $(this).closest('.custom-select').find('.selected-option #value').attr('value',value);
+      $(this)
+        .closest(".custom-select")
+        .find(".selected-option img")
+        .attr("src", selectedImage);
+      $(this)
+        .closest(".custom-select")
+        .find(".selected-option")
+        .attr("name", name);
+      $(this).closest(".custom-select").removeClass("open");
+      $(".custom-select .options-list li").css(
+        "background-color",
+        "transparent"
       );
+      $(this).css("background-color", "#4f4d50");
+      $("#coin_short").val(name);
+      $("#coin-value").val(value);
+      $(this).parent().toggleClass("height");
+      $(this)
+        .closest(".custom-select")
+        .find(".selected-option")
+        .find(".arrow")
+        .toggleClass("rotate");
+      $(".continue_btn").removeClass("continue_disable_btn");
+      $(".black_screen").css("display", "none");
 
-      $(".custom-select .options-list li").on("click", function () {
-        var selectedValue = $(this).data("value");
-        var selectedImage = $(this).data("image");
-        var abbrcoin = $(this).find("div").find("#coin-name").text();
-        var fullcoinname = $(this).find("div").find("#full_name").text();
-        // var value = $(this).find('span').find('#value').html();
-        var name = $(this).attr("name");
+      if (name == "BCH") {
+        var cryptoaddress = "qqprdjwnvauvnvhf5pyrz7a0jx0khpe0dqpf2rvpca";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;BCH. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find("#coin-name")
-          .text(abbrcoin);
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find("#value")
-          .text(fullcoinname);
-        // $(this).closest('.custom-select').find('.selected-option #value').attr('value',value);
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option img")
-          .attr("src", selectedImage);
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .attr("name", name);
-        $(this).closest(".custom-select").removeClass("open");
-        $(".custom-select .options-list li").css(
-          "background-color",
-          "transparent"
+        qrimage.attr(
+          "src",
+          "/address/qqprdjwnvauvnvhf5pyrz7a0jx0khpe0dqpf2rvpca"
         );
-        $(this).css("background-color", "#4f4d50");
-        $("#coin_short").val(name);
-        $("#coin-value").val(value);
-        $(this).parent().toggleClass("height");
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find(".arrow")
-          .toggleClass("rotate");
-        $(".continue_btn").removeClass("continue_disable_btn");
-        $(".black_screen").css("display", "none");
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "BNB") {
+        var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;BNB. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-        if (name == "BCH") {
-          var cryptoaddress = "qqprdjwnvauvnvhf5pyrz7a0jx0khpe0dqpf2rvpca";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;BCH. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr(
+          "src",
+          "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
+        );
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "BTC") {
+        var cryptoaddress = "bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.00005</strong>&nbsp;BTC. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr(
-            "src",
-            "/address/qqprdjwnvauvnvhf5pyrz7a0jx0khpe0dqpf2rvpca"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "BNB") {
-          var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;BNB. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr(
+          "src",
+          "/address/bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy"
+        );
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "DOGE") {
+        var cryptoaddress = "DMxJTccpTpCusWF6RRWe9VX4X4cfksF7yC";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.1</strong>&nbsp;DOGE. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr(
-            "src",
-            "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "BTC") {
-          var cryptoaddress = "bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.00005</strong>&nbsp;BTC. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr("src", "/address/DMxJTccpTpCusWF6RRWe9VX4X4cfksF7yC");
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "ETH") {
+        var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;ETH. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr(
-            "src",
-            "/address/bc1qnhpg20a88mm07e3lekdyp6zn6drzysez9nz2yy"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "DOGE") {
-          var cryptoaddress = "DMxJTccpTpCusWF6RRWe9VX4X4cfksF7yC";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.1</strong>&nbsp;DOGE. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr(
+          "src",
+          "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
+        );
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "LTC") {
+        var cryptoaddress = "ltc1qjtr5g96vnhnlxtrpep02up274e0h6d66pxf9fl";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.005</strong>&nbsp;LTC. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr("src", "/address/DMxJTccpTpCusWF6RRWe9VX4X4cfksF7yC");
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "ETH") {
-          var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;ETH. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr("src", "/address/ltc1qjtr5g96vnhnlxtrpep02up274e0h6d66pxf9fl");
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "SOL") {
+        var cryptoaddress = "FctpkK5bQwWpJSm7tYErwNQv7b34oeT2qmSutvCk8yjo";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.01</strong>&nbsp;SOL. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr(
-            "src",
-            "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "LTC") {
-          var cryptoaddress = "ltc1qjtr5g96vnhnlxtrpep02up274e0h6d66pxf9fl";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.005</strong>&nbsp;LTC. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr(
+          "src",
+          "/address/FctpkK5bQwWpJSm7tYErwNQv7b34oeT2qmSutvCk8yjo"
+        );
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "TRX") {
+        var cryptoaddress = "TUzFATMeKwB7Qmq6jdaJJSmxocQEi5m6Pj";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.005</strong>&nbsp;TRX. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr("src", "/address/ltc1qjtr5g96vnhnlxtrpep02up274e0h6d66pxf9fl");
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "SOL") {
-          var cryptoaddress = "FctpkK5bQwWpJSm7tYErwNQv7b34oeT2qmSutvCk8yjo";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.01</strong>&nbsp;SOL. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr("src", "/address/TUzFATMeKwB7Qmq6jdaJJSmxocQEi5m6Pj");
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "USDT") {
+        var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.01</strong>&nbsp;USDT. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr(
-            "src",
-            "/address/FctpkK5bQwWpJSm7tYErwNQv7b34oeT2qmSutvCk8yjo"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "TRX") {
-          var cryptoaddress = "TUzFATMeKwB7Qmq6jdaJJSmxocQEi5m6Pj";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.005</strong>&nbsp;TRX. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr(
+          "src",
+          "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
+        );
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "XMR") {
+        var cryptoaddress =
+          "8A36gm2UxA2bUF4eMFNMecVMDKm9n9AnERxMJQULLmePPiSYknENytjbfeA2GD8ACLXkmB2aFTv9Rf2bVUw17v8F46TASth";
+        var longMessage =
+          'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;XMR. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr("src", "/address/TUzFATMeKwB7Qmq6jdaJJSmxocQEi5m6Pj");
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "USDT") {
-          var cryptoaddress = "0xEba028622F8e9bF6f7812d2D32B29F051b12b191";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.01</strong>&nbsp;USDT. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr(
+          "src",
+          "/address/8A36gm2UxA2bUF4eMFNMecVMDKm9n9AnERxMJQULLmePPiSYknENytjbfeA2GD8ACLXkmB2aFTv9Rf2bVUw17v8F46TASth"
+        );
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+      if (name == "XRP") {
+        var cryptoaddress = "rK6utP3F3vNjeGpzCDY6Q1JK8X2mbTabTe";
+        var longMessage =
+          'Minimum deposit <strong id="bold">10</strong>&nbsp;XRP. An amount below minimum will result in your deposit being lost';
+        var qrimage = $(".qr_img").find("img");
 
-          qrimage.attr(
-            "src",
-            "/address/0xEba028622F8e9bF6f7812d2D32B29F051b12b191"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "XMR") {
-          var cryptoaddress =
-            "8A36gm2UxA2bUF4eMFNMecVMDKm9n9AnERxMJQULLmePPiSYknENytjbfeA2GD8ACLXkmB2aFTv9Rf2bVUw17v8F46TASth";
-          var longMessage =
-            'Minimum deposit <strong id="bold">0.0005</strong>&nbsp;XMR. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+        qrimage.attr("src", "/address/rK6utP3F3vNjeGpzCDY6Q1JK8X2mbTabTe");
+        $(".address_box").find("p").html(cryptoaddress);
+        $(".long_message_box").find("p").html(longMessage);
+      }
+    });
 
-          qrimage.attr(
-            "src",
-            "/address/8A36gm2UxA2bUF4eMFNMecVMDKm9n9AnERxMJQULLmePPiSYknENytjbfeA2GD8ACLXkmB2aFTv9Rf2bVUw17v8F46TASth"
-          );
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-        if (name == "XRP") {
-          var cryptoaddress = "rK6utP3F3vNjeGpzCDY6Q1JK8X2mbTabTe";
-          var longMessage =
-            'Minimum deposit <strong id="bold">10</strong>&nbsp;XRP. An amount below minimum will result in your deposit being lost';
-          var qrimage = $(".qr_img").find("img");
+    $("#currency_select").on("click", function () {
+      $(".drop_down_container").css("display", "block");
 
-          qrimage.attr("src", "/address/rK6utP3F3vNjeGpzCDY6Q1JK8X2mbTabTe");
-          $(".address_box").find("p").html(cryptoaddress);
-          $(".long_message_box").find("p").html(longMessage);
-        }
-      });
+      if ($(window).width() <= 480) {
+        $(".drop_down_container").css("margin-top", "12px");
+        $(".drop_down_container").css("margin-bottom", "12px");
+      } else {
+        $(".drop_down_container").css("margin-top", "24px");
+        $(".drop_down_container").css("margin-bottom", "24px");
+      }
 
-      $("#currency_select").on("click", function () {
-        $(".drop_down_container").css("display", "block");
+      $(".custom-select").toggleClass("open");
+      $(this).css("display", "none");
+      $(".black_screen").css("display", "block");
+    });
 
-        if ($(window).width() <= 480) {
-          $(".drop_down_container").css("margin-top", "12px");
-          $(".drop_down_container").css("margin-bottom", "12px");
-        } else {
-          $(".drop_down_container").css("margin-top", "24px");
-          $(".drop_down_container").css("margin-bottom", "24px");
-        }
-
+    $(".option_list_heading")
+      .find("i")
+      .on("click", function () {
+        $(".drop_down_container").css("display", "none");
         $(".custom-select").toggleClass("open");
-        $(this).css("display", "none");
-        $(".black_screen").css("display", "block");
+        $("#currency_select").css("display", "block");
+        $(".continue_btn").addClass("continue_disable_btn");
+        $(".black_screen").css("display", "none");
       });
 
-      $(".option_list_heading")
-        .find("i")
-        .on("click", function () {
-          $(".drop_down_container").css("display", "none");
-          $(".custom-select").toggleClass("open");
-          $("#currency_select").css("display", "block");
-          $(".continue_btn").addClass("continue_disable_btn");
-          $(".black_screen").css("display", "none");
-        });
+    $(".continue_btn")
+      .find("button")
+      .on("click", function () {
+        $(".wheel_container").css("display", "flex");
+        $(".drop_down_container").css("display", "none");
 
-      $(".continue_btn")
-        .find("button")
-        .on("click", function () {
-          $(".wheel_container").css("display", "flex");
-          $(".drop_down_container").css("display", "none");
+        setTimeout(function () {
+          $(".wheel_container").css("display", "none");
+          $(".container").css("display", "block");
+          $(".continue_btn").css("display", "none");
+          $("#currency_select").css("display", "none");
+          $(".level_one").find("p").css("display", "none");
+          $(".level_one").find("i").css("display", "block");
+          $(".level_two").css("background-color", "var(--bluebtn-color)");
+        }, 800);
+      });
 
-          setTimeout(function () {
-            $(".wheel_container").css("display", "none");
-            $(".container").css("display", "block");
-            $(".continue_btn").css("display", "none");
-            $("#currency_select").css("display", "none");
-            $(".level_one").find("p").css("display", "none");
-            $(".level_one").find("i").css("display", "block");
-            $(".level_two").css("background-color", "var(--bluebtn-color)");
-          }, 800);
-        });
+    $("#copy_icon").on("click", function () {
+      $(".clipboard").css({
+        display: "flex",
+        transform: "scale(1)",
+        opacity: "1",
+      });
 
-      $("#copy_icon").on("click", function () {
+      $(this).closest(".copy_icon").css("background-color", "#393939");
+
+      setTimeout(function () {
         $(".clipboard").css({
-          display: "flex",
-          transform: "scale(1)",
-          opacity: "1",
+          display: "none",
+          transform: "scale(0)",
+          opacity: "0",
         });
 
-        $(this).closest(".copy_icon").css("background-color", "#393939");
-
-        setTimeout(function () {
-          $(".clipboard").css({
-            display: "none",
-            transform: "scale(0)",
-            opacity: "0",
-          });
-
-          $("#copy_icon")
-            .closest(".copy_icon")
-            .css("background-color", "#1e1e1e");
-        }, 2000);
-
-        setTimeout(function () {
-          $("#copy_icon")
-            .closest(".copy_icon")
-            .css("background-color", "#1e1e1e");
-        }, 1000);
-
-        var addresscopy = $(this)
+        $("#copy_icon")
           .closest(".copy_icon")
-          .parent(".address_box_container")
-          .find(".address_box")
-          .text();
+          .css("background-color", "#1e1e1e");
+      }, 2000);
 
-        navigator.clipboard.writeText(addresscopy);
-      });
+      setTimeout(function () {
+        $("#copy_icon")
+          .closest(".copy_icon")
+          .css("background-color", "#1e1e1e");
+      }, 1000);
 
-      $(".clip-close").on("click", function () {
-        $(".clipboard").css("transform", "scale(0)");
-      });
-    </script>
+      var addresscopy = $(this)
+        .closest(".copy_icon")
+        .parent(".address_box_container")
+        .find(".address_box")
+        .text();
+
+      navigator.clipboard.writeText(addresscopy);
+    });
+
+    $(".clip-close").on("click", function () {
+      $(".clipboard").css("transform", "scale(0)");
+    });
+  </script>
+    <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
+
 </html>

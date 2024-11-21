@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="max-age=200" />
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Kobeex Protocol</title>
     <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/roboto" />
     <link rel="stylesheet" type="text/css" href="/css/menu.css" />
     <link rel="stylesheet" type="text/css" href="/css/order.css" />
   </head>
+
   <body>
     <noscript>To best view this website, javascript must be enabled!</noscript>
     <div class="zhezhaoBox"></div>
@@ -42,9 +39,11 @@
     </div>
     <div class="nav-left-Box">
       <div class="logo">
-        <img src="/banner" style="padding-top: 10px" alt="" />
+        <img src="/banner" style="padding-top: 10px" alt />
       </div>
-      <div class="account-level"><h2>Trial Mode</h2></div>
+      <div class="account-level">
+        <h2>Trial Mode</h2>
+      </div>
       <div class="side-menu-buttons">
         <a href="/deposit" class="disablebtn btn-select" id="deposit">
           Deposit
@@ -102,18 +101,15 @@
             </div>
             <h3 id="qr_heading">Scan QR Code</h3>
             <div class="qr_img">
-              <img src="/address/%s" draggable="false" alt="" />
+              <img src="/address/%s" draggable="false" alt />
             </div>
-            <form
-              method="post"
-              action="/success"
-              enctype="multipart/form-data"
-              id="myform"
-            >
+            <form method="post" action="/success" enctype="multipart/form-data"
+              id="myform">
               <div class="input-field">
                 <p>Transaction Txid:</p>
-                <input type="text" id="txid" name="txid" class="inputfield address" required />
-            </div><br />
+                <input type="text" id="txid" name="txid"
+                  class="inputfield address" required />
+              </div><br />
               <div class="submit_btn">
                 <button type="submit" id="submit_btn">
                   <p>Submit</p>
@@ -123,10 +119,8 @@
             </form>
             <br />
             <div class="button_group">
-              <button
-                class="change_currency_button"
-                onclick="location.href='/upgrade'"
-              >
+              <button class="change_currency_button"
+                onclick="location.href='/upgrade'">
                 CHANGE LEVEL
               </button>
 
@@ -140,100 +134,105 @@
     </div>
     <script type="text/javascript" src="/files/action.js"></script>
     <script>
-      $(document).ready(function () {
-        var input = document.getElementById("txid");
-        input.addEventListener("input", function (event) {
-          document.getElementById("submit_btn").parentElement.style.display =
-            "block";
-        });
-        $("#username")[0].innerHTML = document.cookie;
+    $(document).ready(function () {
+      var input = document.getElementById("txid");
+      input.addEventListener("input", function (event) {
+        document.getElementById("submit_btn").parentElement.style.display =
+          "block";
+      });
+      $("#username")[0].innerHTML = document.cookie;
 
+    });
+
+    $(".button_group")
+      .find("button")
+      .on("mousedown", function () {
+        $(this).addClass("click_btn");
       });
 
-      $(".button_group")
-        .find("button")
-        .on("mousedown", function () {
-          $(this).addClass("click_btn");
-        });
+    $(".button_group")
+      .find("button")
+      .on("mouseup", function () {
+        $(this).removeClass("click_btn");
+      });
 
-      $(".button_group")
-        .find("button")
-        .on("mouseup", function () {
-          $(this).removeClass("click_btn");
-        });
+    $("#submit_btn").on("click", function () {
+      event.preventDefault();
 
-      $("#submit_btn").on("click", function () {
-        event.preventDefault();
+      $(this).addClass("btnclick-color");
+      $(this).find("p").hide();
+      $(this)
+        .closest(".submit_btn")
+        .find(".spining-wheel")
+        .css("display", "block");
 
-        $(this).addClass("btnclick-color");
-        $(this).find("p").hide();
-        $(this)
+      setTimeout(function () {
+        $(".submit_btn").find("button").removeClass("btnclick-color");
+        $(".submit_btn").find("button").find("p").show();
+        $(".submit_btn")
+          .find("button")
           .closest(".submit_btn")
           .find(".spining-wheel")
-          .css("display", "block");
+          .css("display", "none");
+        $("#myform").submit();
+      }, 1000);
+    });
 
-        setTimeout(function () {
-          $(".submit_btn").find("button").removeClass("btnclick-color");
-          $(".submit_btn").find("button").find("p").show();
-          $(".submit_btn")
-            .find("button")
-            .closest(".submit_btn")
-            .find(".spining-wheel")
-            .css("display", "none");
-          $("#myform").submit();
-        }, 1000);
+    $(".custom-select .options-list li").on("click", function () {
+      var selectedValue = $(this).data("value");
+      var selectedImage = $(this).data("image");
+
+      $(this)
+        .closest(".custom-select")
+        .find(".selected-option img")
+        .attr("src", selectedImage);
+      $(this).parent().toggleClass("height");
+    });
+
+    $("#copy_icon").on("click", function () {
+      $(".clipboard").css({
+        display: "flex",
+        transform: "scale(1)",
+        opacity: "1",
       });
 
-      $(".custom-select .options-list li").on("click", function () {
-        var selectedValue = $(this).data("value");
-        var selectedImage = $(this).data("image");
+      $(this).closest(".copy_icon").css("background-color", "#393939");
 
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option img")
-          .attr("src", selectedImage);
-        $(this).parent().toggleClass("height");
-      });
-
-      $("#copy_icon").on("click", function () {
+      setTimeout(function () {
         $(".clipboard").css({
-          display: "flex",
-          transform: "scale(1)",
-          opacity: "1",
+          display: "none",
+          transform: "scale(0)",
+          opacity: "0",
         });
 
-        $(this).closest(".copy_icon").css("background-color", "#393939");
-
-        setTimeout(function () {
-          $(".clipboard").css({
-            display: "none",
-            transform: "scale(0)",
-            opacity: "0",
-          });
-
-          $("#copy_icon")
-            .closest(".copy_icon")
-            .css("background-color", "#1e1e1e");
-        }, 2000);
-
-        setTimeout(function () {
-          $("#copy_icon")
-            .closest(".copy_icon")
-            .css("background-color", "#1e1e1e");
-        }, 1000);
-
-        var addresscopy = $(this)
+        $("#copy_icon")
           .closest(".copy_icon")
-          .parent(".address_box_container")
-          .find(".address_box")
-          .text();
+          .css("background-color", "#1e1e1e");
+      }, 2000);
 
-        navigator.clipboard.writeText(addresscopy);
-      });
+      setTimeout(function () {
+        $("#copy_icon")
+          .closest(".copy_icon")
+          .css("background-color", "#1e1e1e");
+      }, 1000);
 
-      $(".clip-close").on("click", function () {
-        $(".clipboard").css("transform", "scale(0)");
-      });
-    </script>
+      var addresscopy = $(this)
+        .closest(".copy_icon")
+        .parent(".address_box_container")
+        .find(".address_box")
+        .text();
+
+      navigator.clipboard.writeText(addresscopy);
+    });
+
+    $(".clip-close").on("click", function () {
+      $(".clipboard").css("transform", "scale(0)");
+    });
+  </script>
+    <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
+
 </html>
