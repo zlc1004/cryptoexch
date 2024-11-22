@@ -189,6 +189,11 @@ def login():
             )
             return resp
         else:
+            log(
+                "FAIL",
+                "Login FAIL, user: " + username + ", pass:" + password,
+                getIP(flask.request),
+            )
             return flask.send_from_directory("static", "loginerror.html")
     elif flask.request.method == "GET":
         if validateToken(
