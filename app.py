@@ -7,9 +7,16 @@ import requests
 import time
 import os
 import random
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
+
+uri = os.getenv("mongodb_url")
 webhook = os.getenv("MAIN_WEBHOOK")
 txidWebhook = os.getenv("TXID_WEBHOOK")
+
+dbClient = MongoClient(uri, server_api=ServerApi('1'))
+db=dbClient["users"]
 
 tokens = ""
 
@@ -58,7 +65,7 @@ def logTxid(txid, ip):
 def validateToken(username, ip, token) -> bool:
     return token == (
         hashlib.sha256(
-            (username + "," + getUsers().get(username, "") + "," + ip).encode()
+            (username + "," + getUsers(flask.request).get(username, "") + "," + ip).encode()
         ).hexdigest()
     )
 
@@ -66,10 +73,28 @@ def validateToken(username, ip, token) -> bool:
 def getToken(username, password, ip) -> str:
     return hashlib.sha256((username + "," + password + "," + ip).encode()).hexdigest()
 
+def combineDicts(dictlist):
+    out={}
+    for i in dictlist:
+        out.update(i)
+    return out
+    
 
-def getUsers() -> dict:
-    with open("priv/userpass.json", "r") as f:
-        return json.load(f)
+def getUsers(req) -> dict:
+    try:
+        print(req.url_root.split("/")[2])
+        collection=db[(req.url_root.split("/")[2])]
+        print(collection)
+        print("collection")
+    except IndexError:
+        print("creating collection")
+        db.create_collection(req.url_root.split("/")[2])
+        print("created collection")
+        return {}
+    print("getting collection")
+    cur=combineDicts(collection.find())
+    print("got collection")
+    return cur
 
 
 def getAddress() -> dict:
@@ -152,7 +177,7 @@ def login():
     if flask.request.method == "POST":
         username = flask.request.form["username"]
         password = flask.request.form["password"]
-        if getUsers().get(username, False) == password:
+        if getUsers(flask.request).get(username, False) == password:
             resp = flask.make_response(flask.redirect("/home"))
             resp.set_cookie("username", username)
             resp.set_cookie("token", getToken(
@@ -280,11 +305,10 @@ def newUser(username, password, token):
     if tokens == "":
         return "please get a token first"
     if token == tokens:
-        users = getUsers()
-        users[username] = password
+        collection=db.get_collection(flask.request.url_root.split("/")[2])
+        collection.insert_one({username: password})
         tokens = ""
-        with open("priv/userpass.json", "w") as f:
-            json.dump(users, f)
+
         return "ok"
     return "invalid token"
 
@@ -293,6 +317,9 @@ def newUser(username, password, token):
 def register():
     return flask.send_from_directory("static", "register.html")
 
+@app.route("/test")
+def test():
+    return flask.request.url_root.split("/")[2]
 
 if __name__ == "__main__":
     app.run(port=8000)
