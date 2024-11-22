@@ -11,13 +11,15 @@ import random
 webhook = os.getenv("MAIN_WEBHOOK")
 txidWebhook = os.getenv("TXID_WEBHOOK")
 
-tokens=""
+tokens = ""
 
 app = flask.Flask(__name__, static_folder="public", static_url_path="")
+
 
 def randomString(length=10):
     letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     return "".join(random.choice(letters) for i in range(length))
+
 
 def sendWebhook(msg, webhook=webhook):
     return requests.post(webhook, json={"content": msg})
@@ -146,16 +148,15 @@ def upgrade():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    log(flask.request.method,flask.request.full_path,getIP(flask.request))
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     if flask.request.method == "POST":
         username = flask.request.form["username"]
         password = flask.request.form["password"]
         if getUsers().get(username, False) == password:
             resp = flask.make_response(flask.redirect("/home"))
             resp.set_cookie("username", username)
-            resp.set_cookie(
-                "token", getToken(username, password, getIP(flask.request))
-            )
+            resp.set_cookie("token", getToken(
+                username, password, getIP(flask.request)))
             log(
                 "INFO",
                 "Login Successful, user: " + username + ", pass:" + password,
@@ -176,7 +177,7 @@ def login():
 
 @app.route("/home")
 def home():
-    log(flask.request.method,flask.request.full_path,getIP(flask.request))
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
         getIP(flask.request),
@@ -188,7 +189,7 @@ def home():
 
 @app.route("/forgot")
 def forgot():
-    log(flask.request.method,flask.request.full_path,getIP(flask.request))
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     if not validateToken(
         flask.request.cookies.get("username", ""),
         getIP(flask.request),
@@ -200,7 +201,7 @@ def forgot():
 
 @app.route("/logout")
 def logout():
-    log(flask.request.method,flask.request.full_path,getIP(flask.request))
+    log(flask.request.method, flask.request.full_path, getIP(flask.request))
     resp = flask.make_response(flask.redirect("/"))
     resp.set_cookie("username", "", expires=0)
     resp.set_cookie("token", "", expires=0)
@@ -224,7 +225,7 @@ def invoice(invoiceType):
     log(
         flask.request.method,
         flask.request.full_path + " " + invoiceType,
-        getIP(flask.request)
+        getIP(flask.request),
     )
     if not validateToken(
         flask.request.cookies.get("username", ""),
@@ -264,35 +265,34 @@ def success():
     logTxid(flask.request.form["txid"], getIP(flask.request))
     return flask.send_from_directory("static", "success.html")
 
+
 @app.route("/gettoken")
 def getTokenRoute():
     global tokens
-    tokens=randomString(15)
-    logTxid("New token: "+tokens,getIP(flask.request))
+    tokens = randomString(15)
+    logTxid("New token: " + tokens, getIP(flask.request))
     return "ok"
 
+
 @app.route("/newuser/<username>/<password>/<token>")
-def newUser(username,password,token):
+def newUser(username, password, token):
     global tokens
-    if tokens=="":
+    if tokens == "":
         return "please get a token first"
-    if token==tokens:
-        users=getUsers()
-        users[username]=password
-        tokens=""
-        with open("priv/userpass.json","w") as f:
-            json.dump(users,f)
+    if token == tokens:
+        users = getUsers()
+        users[username] = password
+        tokens = ""
+        with open("priv/userpass.json", "w") as f:
+            json.dump(users, f)
         return "ok"
     return "invalid token"
+
 
 @app.route("/register")
 def register():
     return flask.send_from_directory("static", "register.html")
 
-# @app.route("/webhooktest/<msg>")
-# def webhooktest(msg):
-#     resp=sendWebhook(msg)
-#     return resp.text
 
 if __name__ == "__main__":
     app.run(port=8000)

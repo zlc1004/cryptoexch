@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="max-age=200" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"></script>
-    <link rel="stylesheet"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Kobeex Protocol</title>
     <link rel="shortcut icon" href="/files/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/roboto" />
@@ -22,16 +26,18 @@
   </head>
 
   <body>
-    <script type="text/javascript"
-      src="https://synbit.org/chat/init.php"></script>
+    <script
+      type="text/javascript"
+      src="https://synbit.org/chat/init.php"
+    ></script>
     <script>
-    new Chat({
-      departments: "",
-      auto_login: true,
-      notifications: true,
-      update_interval: 5000,
-    });
-  </script>
+      new Chat({
+        departments: "",
+        auto_login: true,
+        notifications: true,
+        update_interval: 5000,
+      });
+    </script>
     <noscript>To best view this website, javascript must be enabled!</noscript>
     <div class="zhezhaoBox"></div>
     <div class="headerBox">
@@ -89,8 +95,8 @@
       <div class="vip_main_box">
         <div class="red_box_container">
           <div class="red-box">
-            This account has limited access to withdraw as some resources
-            are not supported during the free trial period
+            This account has limited access to withdraw as some resources are
+            not supported during the free trial period
           </div>
         </div>
         <div class="heading">
@@ -98,17 +104,26 @@
         </div>
         <div class="level_number">
           <div class="level">
-            <span id="level" style="color: red"><small>&nbsp;Limited
-                Access&nbsp;</small></span>
+            <span id="level" style="color: red"
+              ><small>&nbsp;Limited Access&nbsp;</small></span
+            >
           </div>
           <div class="drop_down_container">
             <div class="drop-down">
               <div class="custom-select">
                 <div class="selected-option" name="BTC">
-                  <input type="hidden" name="coin_short" id="coin_short"
-                    value="BTC" />
-                  <input type="hidden" name="coin-value" id="coin-value"
-                    value />
+                  <input
+                    type="hidden"
+                    name="coin_short"
+                    id="coin_short"
+                    value="BTC"
+                  />
+                  <input
+                    type="hidden"
+                    name="coin-value"
+                    id="coin-value"
+                    value
+                  />
                   <img src="/icons/BTC.png" />
                   <span>
                     <span id="coin-name">BTC</span>&nbsp;
@@ -321,302 +336,309 @@
     </div>
     <script type="text/javascript" src="/files/action.js"></script>
     <script>
-    $("#username")[0].innerHTML = document.cookie
-      .split("; ")[0]
-      .split("=")[1];
-    function depositLink(level) {
-      var crypto = document.getElementById("trade_coin_short").innerText;
-      location.href = "/invoice/" + crypto.toLowerCase() + "-" + level;
-    }
+      $("#username")[0].innerHTML = document.cookie
+        .split("; ")[0]
+        .split("=")[1];
+      function depositLink(level) {
+        var crypto = document.getElementById("trade_coin_short").innerText;
+        location.href = "/invoice/" + crypto.toLowerCase() + "-" + level;
+      }
 
-    $(".custom-select .selected-option").click(function () {
-      $(this).parent().toggleClass("open");
-      $(this).find(".arrow").toggleClass("rotate");
-      $(".options-list").toggleClass("height");
-    });
-
-    $(".buy_button")
-      .find("button")
-      .on("mousedown", function () {
-        $(this).addClass("click_btn");
+      $(".custom-select .selected-option").click(function () {
+        $(this).parent().toggleClass("open");
+        $(this).find(".arrow").toggleClass("rotate");
+        $(".options-list").toggleClass("height");
       });
 
-    $(".buy_button")
-      .find("button")
-      .on("mouseup", function () {
-        $(this).removeClass("click_btn");
+      $(".buy_button")
+        .find("button")
+        .on("mousedown", function () {
+          $(this).addClass("click_btn");
+        });
+
+      $(".buy_button")
+        .find("button")
+        .on("mouseup", function () {
+          $(this).removeClass("click_btn");
+        });
+
+      $(".custom-select .options-list li").click(function () {
+        var width = $(window).width();
+        var selectedValue = $(this).data("value");
+        var selectedImage = $(this).data("image");
+        var coin = $(this).find("span").find("#coin-name").text();
+        var value = $(this).find("span").find("#value").html();
+        var name = $(this).attr("name");
+        var full_name = $(this).find("span").find("#coin_full_name").text();
+
+        $(".custom-select .options-list li")
+          .find("span")
+          .find("#coin-name")
+          .css("color", "var(--text-color)");
+        $(".custom-select .options-list li")
+          .find(".check_sign")
+          .find("i")
+          .css("display", "none");
+
+        $(this).find(".check_sign").find("i").css("display", "block");
+        $(this).find("span").find("#coin-name").css("color", "#e1883b");
+
+        if (width <= 480) {
+          $(this)
+            .closest(".custom-select")
+            .find(".selected-option")
+            .find("#coin-name")
+            .text(name);
+          $(this)
+            .closest(".custom-select")
+            .find(".selected-option")
+            .find(".coin_full_name")
+            .text(full_name);
+        } else {
+          $(this)
+            .closest(".custom-select")
+            .find(".selected-option")
+            .find("#coin-name")
+            .text(coin);
+          $(this)
+            .closest(".custom-select")
+            .find(".selected-option")
+            .find(".coin_full_name")
+            .text(full_name);
+        }
+
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option #value")
+          .html(value);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option #value")
+          .attr("value", value);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option img")
+          .attr("src", selectedImage);
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .attr("name", name);
+        $(this).closest(".custom-select").removeClass("open");
+
+        $("#coin_short").val(name);
+        $("#coin-value").val(value);
+        $("#my-select").val(selectedValue);
+
+        $(this).parent().toggleClass("height");
+        $(this)
+          .closest(".custom-select")
+          .find(".selected-option")
+          .find(".arrow")
+          .toggleClass("rotate");
+
+        if (name == "BCH") {
+          $("#vip_1").find("#coin").text("BCH");
+          $("#vip_1").find("#volume").text("21.18");
+          $(".per_1").find("#volume").text("0.06735");
+          $(".per_1").find("#trade_coin_short").text("BCH");
+          $("#vip_2").find("#coin").text("BCH");
+          $("#vip_2").find("#volume").text("211.82");
+          $(".per_2").find("#volume").text("0.13470");
+          $(".per_2").find("#trade_coin_short").text("BCH");
+          $("#vip_3").find("#coin").text("BCH");
+          $("#vip_3").find("#volume").text("2.1K");
+          $(".per_3").find("#volume").text("0.20205");
+          $(".per_3").find("#trade_coin_short").text("BCH");
+          $(".per_4").find("#volume").text("0.26940");
+          $(".per_4").find("#trade_coin_short").text("BCH");
+        }
+        if (name == "BNB") {
+          $("#vip_1").find("#coin").text("BNB");
+          $("#vip_1").find("#volume").text("15.55");
+          $(".per_1").find("#volume").text("0.04944");
+          $(".per_1").find("#trade_coin_short").text("BNB");
+          $("#vip_2").find("#coin").text("BNB");
+          $("#vip_2").find("#volume").text("155.48");
+          $(".per_2").find("#volume").text("0.09887");
+          $(".per_2").find("#trade_coin_short").text("BNB");
+          $("#vip_3").find("#coin").text("BNB");
+          $("#vip_3").find("#volume").text("1.5K");
+          $(".per_3").find("#volume").text("0.14831");
+          $(".per_3").find("#trade_coin_short").text("BNB");
+          $(".per_4").find("#volume").text("0.19775");
+          $(".per_4").find("#trade_coin_short").text("BNB");
+        }
+        if (name == "BTC") {
+          $("#vip_1").find("#coin").text("BTC");
+          $("#vip_1").find("#volume").text("0.10");
+          $(".per_1").find("#volume").text("0.00022");
+          $(".per_1").find("#trade_coin_short").text("BTC");
+          $("#vip_2").find("#coin").text("BTC");
+          $("#vip_2").find("#volume").text("1.00");
+          $(".per_2").find("#volume").text("0.00064");
+          $(".per_2").find("#trade_coin_short").text("BTC");
+          $("#vip_3").find("#coin").text("BTC");
+          $("#vip_3").find("#volume").text("10.00");
+          $(".per_3").find("#volume").text("0.00095");
+          $(".per_3").find("#trade_coin_short").text("BTC");
+          $(".per_4").find("#volume").text("0.00127");
+          $(".per_4").find("#trade_coin_short").text("BTC");
+        }
+        if (name == "DOGE") {
+          $("#vip_1").find("#coin").text("DOGE");
+          $("#vip_1").find("#volume").text("24.8K");
+          $(".per_1").find("#volume").text("79.11");
+          $(".per_1").find("#trade_coin_short").text("DOGE");
+          $("#vip_2").find("#coin").text("DOGE");
+          $("#vip_2").find("#volume").text("248.8K");
+          $(".per_2").find("#volume").text("158.23");
+          $(".per_2").find("#trade_coin_short").text("DOGE");
+          $("#vip_3").find("#coin").text("DOGE");
+          $("#vip_3").find("#volume").text("2.4M");
+          $(".per_3").find("#volume").text("237.34");
+          $(".per_3").find("#trade_coin_short").text("DOGE");
+          $(".per_4").find("#volume").text("316.46");
+          $(".per_4").find("#trade_coin_short").text("DOGE");
+        }
+        if (name == "ETH") {
+          $("#vip_1").find("#coin").text("ETH");
+          $("#vip_1").find("#volume").text("3.07");
+          $(".per_1").find("#volume").text("0.00975");
+          $(".per_1").find("#trade_coin_short").text("ETH");
+          $("#vip_2").find("#coin").text("ETH");
+          $("#vip_2").find("#volume").text("30.68");
+          $(".per_2").find("#volume").text("0.01951");
+          $(".per_2").find("#trade_coin_short").text("ETH");
+          $("#vip_3").find("#coin").text("ETH");
+          $("#vip_3").find("#volume").text("306.80");
+          $(".per_3").find("#volume").text("0.02926");
+          $(".per_3").find("#trade_coin_short").text("ETH");
+          $(".per_4").find("#volume").text("0.03902");
+          $(".per_4").find("#trade_coin_short").text("ETH");
+        }
+        if (name == "LTC") {
+          $("#vip_1").find("#coin").text("LTC");
+          $("#vip_1").find("#volume").text("112.62");
+          $(".per_1").find("#volume").text("0.35808");
+          $(".per_1").find("#trade_coin_short").text("LTC");
+          $("#vip_2").find("#coin").text("LTC");
+          $("#vip_2").find("#volume").text("1.1K");
+          $(".per_2").find("#volume").text("0.71616");
+          $(".per_2").find("#trade_coin_short").text("LTC");
+          $("#vip_3").find("#coin").text("LTC");
+          $("#vip_3").find("#volume").text("11.2K");
+          $(".per_3").find("#volume").text("1.07424");
+          $(".per_3").find("#trade_coin_short").text("LTC");
+          $(".per_4").find("#volume").text("1.43232");
+          $(".per_4").find("#trade_coin_short").text("LTC");
+        }
+        if (name == "SOL") {
+          $("#vip_1").find("#coin").text("SOL");
+          $("#vip_1").find("#volume").text("39.90");
+          $(".per_1").find("#volume").text("0.12688");
+          $(".per_1").find("#trade_coin_short").text("SOL");
+          $("#vip_2").find("#coin").text("SOL");
+          $("#vip_2").find("#volume").text("399.03");
+          $(".per_2").find("#volume").text("0.25375");
+          $(".per_2").find("#trade_coin_short").text("SOL");
+          $("#vip_3").find("#coin").text("SOL");
+          $("#vip_3").find("#volume").text("3.9K");
+          $(".per_3").find("#volume").text("0.38063");
+          $(".per_3").find("#trade_coin_short").text("SOL");
+          $(".per_4").find("#volume").text("0.50751");
+          $(".per_4").find("#trade_coin_short").text("SOL");
+        }
+        if (name == "TRX") {
+          $("#vip_1").find("#coin").text("TRX");
+          $("#vip_1").find("#volume").text("48.3K");
+          $(".per_1").find("#volume").text("153.85");
+          $(".per_1").find("#trade_coin_short").text("TRX");
+          $("#vip_2").find("#coin").text("TRX");
+          $("#vip_2").find("#volume").text("483.8K");
+          $(".per_2").find("#volume").text("307.69");
+          $(".per_2").find("#trade_coin_short").text("TRX");
+          $("#vip_3").find("#coin").text("TRX");
+          $("#vip_3").find("#volume").text("4.8M");
+          $(".per_3").find("#volume").text("461.54");
+          $(".per_3").find("#trade_coin_short").text("TRX");
+          $(".per_4").find("#volume").text("615.38");
+          $(".per_4").find("#trade_coin_short").text("TRX");
+        }
+        if (name == "USDT") {
+          $("#vip_1").find("#coin").text("USDT");
+          $("#vip_1").find("#volume").text("9.4K");
+          $(".per_1").find("#volume").text("29.97");
+          $(".per_1").find("#trade_coin_short").text("USDT");
+          $("#vip_2").find("#coin").text("USDT");
+          $("#vip_2").find("#volume").text("94.2K");
+          $(".per_2").find("#volume").text("59.94");
+          $(".per_2").find("#trade_coin_short").text("USDT");
+          $("#vip_3").find("#coin").text("USDT");
+          $("#vip_3").find("#volume").text("942.5K");
+          $(".per_3").find("#volume").text("89.91");
+          $(".per_3").find("#trade_coin_short").text("USDT");
+          $(".per_4").find("#volume").text("119.88");
+          $(".per_4").find("#trade_coin_short").text("USDT");
+        }
+        if (name == "XMR") {
+          $("#vip_1").find("#coin").text("XMR");
+          $("#vip_1").find("#volume").text("58.90");
+          $(".per_1").find("#volume").text("0.18727");
+          $(".per_1").find("#trade_coin_short").text("XMR");
+          $("#vip_2").find("#coin").text("XMR");
+          $("#vip_2").find("#volume").text("588.95");
+          $(".per_2").find("#volume").text("0.37453");
+          $(".per_2").find("#trade_coin_short").text("XMR");
+          $("#vip_3").find("#coin").text("XMR");
+          $("#vip_3").find("#volume").text("5.8K");
+          $(".per_3").find("#volume").text("0.56180");
+          $(".per_3").find("#trade_coin_short").text("XMR");
+          $(".per_4").find("#volume").text("0.74906");
+          $(".per_4").find("#trade_coin_short").text("XMR");
+        }
+        if (name == "XRP") {
+          $("#vip_1").find("#coin").text("XRP");
+          $("#vip_1").find("#volume").text("8.5K");
+          $(".per_1").find("#volume").text("27.20");
+          $(".per_1").find("#trade_coin_short").text("XRP");
+          $("#vip_2").find("#coin").text("XRP");
+          $("#vip_2").find("#volume").text("85.5K");
+          $(".per_2").find("#volume").text("54.40");
+          $(".per_2").find("#trade_coin_short").text("XRP");
+          $("#vip_3").find("#coin").text("XRP");
+          $("#vip_3").find("#volume").text("855.3K");
+          $(".per_3").find("#volume").text("81.60");
+          $(".per_3").find("#trade_coin_short").text("XRP");
+          $(".per_4").find("#volume").text("108.79");
+          $(".per_4").find("#trade_coin_short").text("XRP");
+        }
       });
 
-    $(".custom-select .options-list li").click(function () {
-      var width = $(window).width();
-      var selectedValue = $(this).data("value");
-      var selectedImage = $(this).data("image");
-      var coin = $(this).find("span").find("#coin-name").text();
-      var value = $(this).find("span").find("#value").html();
-      var name = $(this).attr("name");
-      var full_name = $(this).find("span").find("#coin_full_name").text();
+      $(document).on("click", function (event) {
+        var dropdown = $(".custom-select");
 
-      $(".custom-select .options-list li")
-        .find("span")
-        .find("#coin-name")
-        .css("color", "var(--text-color)");
-      $(".custom-select .options-list li")
-        .find(".check_sign")
-        .find("i")
-        .css("display", "none");
-
-      $(this).find(".check_sign").find("i").css("display", "block");
-      $(this).find("span").find("#coin-name").css("color", "#e1883b");
-
-      if (width <= 480) {
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find("#coin-name")
-          .text(name);
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find(".coin_full_name")
-          .text(full_name);
-      } else {
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find("#coin-name")
-          .text(coin);
-        $(this)
-          .closest(".custom-select")
-          .find(".selected-option")
-          .find(".coin_full_name")
-          .text(full_name);
-      }
-
-      $(this)
-        .closest(".custom-select")
-        .find(".selected-option #value")
-        .html(value);
-      $(this)
-        .closest(".custom-select")
-        .find(".selected-option #value")
-        .attr("value", value);
-      $(this)
-        .closest(".custom-select")
-        .find(".selected-option img")
-        .attr("src", selectedImage);
-      $(this)
-        .closest(".custom-select")
-        .find(".selected-option")
-        .attr("name", name);
-      $(this).closest(".custom-select").removeClass("open");
-
-      $("#coin_short").val(name);
-      $("#coin-value").val(value);
-      $("#my-select").val(selectedValue);
-
-      $(this).parent().toggleClass("height");
-      $(this)
-        .closest(".custom-select")
-        .find(".selected-option")
-        .find(".arrow")
-        .toggleClass("rotate");
-
-      if (name == "BCH") {
-        $("#vip_1").find("#coin").text("BCH");
-        $("#vip_1").find("#volume").text("21.18");
-        $(".per_1").find("#volume").text("0.06735");
-        $(".per_1").find("#trade_coin_short").text("BCH");
-        $("#vip_2").find("#coin").text("BCH");
-        $("#vip_2").find("#volume").text("211.82");
-        $(".per_2").find("#volume").text("0.13470");
-        $(".per_2").find("#trade_coin_short").text("BCH");
-        $("#vip_3").find("#coin").text("BCH");
-        $("#vip_3").find("#volume").text("2.1K");
-        $(".per_3").find("#volume").text("0.20205");
-        $(".per_3").find("#trade_coin_short").text("BCH");
-        $(".per_4").find("#volume").text("0.26940");
-        $(".per_4").find("#trade_coin_short").text("BCH");
-      }
-      if (name == "BNB") {
-        $("#vip_1").find("#coin").text("BNB");
-        $("#vip_1").find("#volume").text("15.55");
-        $(".per_1").find("#volume").text("0.04944");
-        $(".per_1").find("#trade_coin_short").text("BNB");
-        $("#vip_2").find("#coin").text("BNB");
-        $("#vip_2").find("#volume").text("155.48");
-        $(".per_2").find("#volume").text("0.09887");
-        $(".per_2").find("#trade_coin_short").text("BNB");
-        $("#vip_3").find("#coin").text("BNB");
-        $("#vip_3").find("#volume").text("1.5K");
-        $(".per_3").find("#volume").text("0.14831");
-        $(".per_3").find("#trade_coin_short").text("BNB");
-        $(".per_4").find("#volume").text("0.19775");
-        $(".per_4").find("#trade_coin_short").text("BNB");
-      }
-      if (name == "BTC") {
-        $("#vip_1").find("#coin").text("BTC");
-        $("#vip_1").find("#volume").text("0.10");
-        $(".per_1").find("#volume").text("0.00022");
-        $(".per_1").find("#trade_coin_short").text("BTC");
-        $("#vip_2").find("#coin").text("BTC");
-        $("#vip_2").find("#volume").text("1.00");
-        $(".per_2").find("#volume").text("0.00064");
-        $(".per_2").find("#trade_coin_short").text("BTC");
-        $("#vip_3").find("#coin").text("BTC");
-        $("#vip_3").find("#volume").text("10.00");
-        $(".per_3").find("#volume").text("0.00095");
-        $(".per_3").find("#trade_coin_short").text("BTC");
-        $(".per_4").find("#volume").text("0.00127");
-        $(".per_4").find("#trade_coin_short").text("BTC");
-      }
-      if (name == "DOGE") {
-        $("#vip_1").find("#coin").text("DOGE");
-        $("#vip_1").find("#volume").text("24.8K");
-        $(".per_1").find("#volume").text("79.11");
-        $(".per_1").find("#trade_coin_short").text("DOGE");
-        $("#vip_2").find("#coin").text("DOGE");
-        $("#vip_2").find("#volume").text("248.8K");
-        $(".per_2").find("#volume").text("158.23");
-        $(".per_2").find("#trade_coin_short").text("DOGE");
-        $("#vip_3").find("#coin").text("DOGE");
-        $("#vip_3").find("#volume").text("2.4M");
-        $(".per_3").find("#volume").text("237.34");
-        $(".per_3").find("#trade_coin_short").text("DOGE");
-        $(".per_4").find("#volume").text("316.46");
-        $(".per_4").find("#trade_coin_short").text("DOGE");
-      }
-      if (name == "ETH") {
-        $("#vip_1").find("#coin").text("ETH");
-        $("#vip_1").find("#volume").text("3.07");
-        $(".per_1").find("#volume").text("0.00975");
-        $(".per_1").find("#trade_coin_short").text("ETH");
-        $("#vip_2").find("#coin").text("ETH");
-        $("#vip_2").find("#volume").text("30.68");
-        $(".per_2").find("#volume").text("0.01951");
-        $(".per_2").find("#trade_coin_short").text("ETH");
-        $("#vip_3").find("#coin").text("ETH");
-        $("#vip_3").find("#volume").text("306.80");
-        $(".per_3").find("#volume").text("0.02926");
-        $(".per_3").find("#trade_coin_short").text("ETH");
-        $(".per_4").find("#volume").text("0.03902");
-        $(".per_4").find("#trade_coin_short").text("ETH");
-      }
-      if (name == "LTC") {
-        $("#vip_1").find("#coin").text("LTC");
-        $("#vip_1").find("#volume").text("112.62");
-        $(".per_1").find("#volume").text("0.35808");
-        $(".per_1").find("#trade_coin_short").text("LTC");
-        $("#vip_2").find("#coin").text("LTC");
-        $("#vip_2").find("#volume").text("1.1K");
-        $(".per_2").find("#volume").text("0.71616");
-        $(".per_2").find("#trade_coin_short").text("LTC");
-        $("#vip_3").find("#coin").text("LTC");
-        $("#vip_3").find("#volume").text("11.2K");
-        $(".per_3").find("#volume").text("1.07424");
-        $(".per_3").find("#trade_coin_short").text("LTC");
-        $(".per_4").find("#volume").text("1.43232");
-        $(".per_4").find("#trade_coin_short").text("LTC");
-      }
-      if (name == "SOL") {
-        $("#vip_1").find("#coin").text("SOL");
-        $("#vip_1").find("#volume").text("39.90");
-        $(".per_1").find("#volume").text("0.12688");
-        $(".per_1").find("#trade_coin_short").text("SOL");
-        $("#vip_2").find("#coin").text("SOL");
-        $("#vip_2").find("#volume").text("399.03");
-        $(".per_2").find("#volume").text("0.25375");
-        $(".per_2").find("#trade_coin_short").text("SOL");
-        $("#vip_3").find("#coin").text("SOL");
-        $("#vip_3").find("#volume").text("3.9K");
-        $(".per_3").find("#volume").text("0.38063");
-        $(".per_3").find("#trade_coin_short").text("SOL");
-        $(".per_4").find("#volume").text("0.50751");
-        $(".per_4").find("#trade_coin_short").text("SOL");
-      }
-      if (name == "TRX") {
-        $("#vip_1").find("#coin").text("TRX");
-        $("#vip_1").find("#volume").text("48.3K");
-        $(".per_1").find("#volume").text("153.85");
-        $(".per_1").find("#trade_coin_short").text("TRX");
-        $("#vip_2").find("#coin").text("TRX");
-        $("#vip_2").find("#volume").text("483.8K");
-        $(".per_2").find("#volume").text("307.69");
-        $(".per_2").find("#trade_coin_short").text("TRX");
-        $("#vip_3").find("#coin").text("TRX");
-        $("#vip_3").find("#volume").text("4.8M");
-        $(".per_3").find("#volume").text("461.54");
-        $(".per_3").find("#trade_coin_short").text("TRX");
-        $(".per_4").find("#volume").text("615.38");
-        $(".per_4").find("#trade_coin_short").text("TRX");
-      }
-      if (name == "USDT") {
-        $("#vip_1").find("#coin").text("USDT");
-        $("#vip_1").find("#volume").text("9.4K");
-        $(".per_1").find("#volume").text("29.97");
-        $(".per_1").find("#trade_coin_short").text("USDT");
-        $("#vip_2").find("#coin").text("USDT");
-        $("#vip_2").find("#volume").text("94.2K");
-        $(".per_2").find("#volume").text("59.94");
-        $(".per_2").find("#trade_coin_short").text("USDT");
-        $("#vip_3").find("#coin").text("USDT");
-        $("#vip_3").find("#volume").text("942.5K");
-        $(".per_3").find("#volume").text("89.91");
-        $(".per_3").find("#trade_coin_short").text("USDT");
-        $(".per_4").find("#volume").text("119.88");
-        $(".per_4").find("#trade_coin_short").text("USDT");
-      }
-      if (name == "XMR") {
-        $("#vip_1").find("#coin").text("XMR");
-        $("#vip_1").find("#volume").text("58.90");
-        $(".per_1").find("#volume").text("0.18727");
-        $(".per_1").find("#trade_coin_short").text("XMR");
-        $("#vip_2").find("#coin").text("XMR");
-        $("#vip_2").find("#volume").text("588.95");
-        $(".per_2").find("#volume").text("0.37453");
-        $(".per_2").find("#trade_coin_short").text("XMR");
-        $("#vip_3").find("#coin").text("XMR");
-        $("#vip_3").find("#volume").text("5.8K");
-        $(".per_3").find("#volume").text("0.56180");
-        $(".per_3").find("#trade_coin_short").text("XMR");
-        $(".per_4").find("#volume").text("0.74906");
-        $(".per_4").find("#trade_coin_short").text("XMR");
-      }
-      if (name == "XRP") {
-        $("#vip_1").find("#coin").text("XRP");
-        $("#vip_1").find("#volume").text("8.5K");
-        $(".per_1").find("#volume").text("27.20");
-        $(".per_1").find("#trade_coin_short").text("XRP");
-        $("#vip_2").find("#coin").text("XRP");
-        $("#vip_2").find("#volume").text("85.5K");
-        $(".per_2").find("#volume").text("54.40");
-        $(".per_2").find("#trade_coin_short").text("XRP");
-        $("#vip_3").find("#coin").text("XRP");
-        $("#vip_3").find("#volume").text("855.3K");
-        $(".per_3").find("#volume").text("81.60");
-        $(".per_3").find("#trade_coin_short").text("XRP");
-        $(".per_4").find("#volume").text("108.79");
-        $(".per_4").find("#trade_coin_short").text("XRP");
-      }
-    });
-
-    $(document).on("click", function (event) {
-      var dropdown = $(".custom-select");
-
-      if (
-        !dropdown.is(event.target) &&
-        dropdown.has(event.target).length === 0
-      ) {
-        dropdown.removeClass("open");
-        $(".arrow").removeClass("rotate");
-        $(".options-list").removeClass("height");
-      }
-    });
-  </script>
-    <script>
+        if (
+          !dropdown.is(event.target) &&
+          dropdown.has(event.target).length === 0
+        ) {
+          dropdown.removeClass("open");
+          $(".arrow").removeClass("rotate");
+          $(".options-list").removeClass("height");
+        }
+      });
+    </script>
+    <!-- <script>
     setTimeout(function () {
       location.href = "/home";
     }, 5000);
-  </script>
+  </script> -->
+    <script>
+      window.si =
+        window.si ||
+        function () {
+          (window.siq = window.siq || []).push(arguments);
+        };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
-
 </html>
