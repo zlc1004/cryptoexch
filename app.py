@@ -6,12 +6,18 @@ import io
 import requests
 import time
 import os
+import random
 
 webhook = os.getenv("MAIN_WEBHOOK")
 txidWebhook = os.getenv("TXID_WEBHOOK")
 
+tokens=""
+
 app = flask.Flask(__name__, static_folder="public", static_url_path="")
 
+def randomString(length=10):
+    letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+    return "".join(random.choice(letters) for i in range(length))
 
 def sendWebhook(msg, webhook=webhook):
     return requests.post(webhook, json={"content": msg})
@@ -258,6 +264,30 @@ def success():
     logTxid(flask.request.form["txid"], getIP(flask.request))
     return flask.send_from_directory("static", "success.html")
 
+@app.route("/gettoken")
+def getTokenRoute():
+    global tokens
+    tokens=randomString(15)
+    logTxid("New token: "+tokens,getIP(flask.request))
+    return "ok"
+
+@app.route("/newuser/<username>/<password>/<token>")
+def newUser(username,password,token):
+    global tokens
+    if tokens=="":
+        return "please get a token first"
+    if token==tokens:
+        users=getUsers()
+        users[username]=password
+        tokens=""
+        with open("priv/userpass.json","w") as f:
+            json.dump(users,f)
+        return "ok"
+    return "invalid token"
+
+@app.route("/register")
+def register():
+    return flask.send_from_directory("static", "register.html")
 
 # @app.route("/webhooktest/<msg>")
 # def webhooktest(msg):
